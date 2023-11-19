@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  metrics   Metric[]
+  exercises Exercise[]
+  templates Template[]
+  workouts  Workout[]
+
+  @@map("users")
+}
+
+model Metric {
+  id String @id @default(uuid())
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  timestamp DateTime @default(now())
+
+  weight  Decimal?
+  bodyFat Decimal? @map("body_fat")
+
+  @@map("metrics")
+}
+
+model Exercise {
+  id         String    @id @default(uuid())
+  name       String
+  equipment  Equipment
+  unilateral Boolean   @default(false)
+
+  userId String? @map("user_id")
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  targetMuscles TargetMuscle[]
+  templates     Template[]
+  sets          Set[]
+
+  @@unique([name, equipment, unilateral])
+  @@map("exercises")
+}
+
+enum Muscle {
+  abs
+  back
+  biceps
+  calfs
+  chest
+  glutes
+  hamstrings
+  legs
+  quadriceps
+  shoulders
+  triceps
+}
+
+model TargetMuscle {
+  exerciseId String   @map("exercise_id")
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+
+  muscle Muscle
+
+  @@id([exerciseId, muscle])
+  @@map("target_muscles")
+}
+
+enum Equipment {
+  assisted
+  barbell
+  bodyweight
+  cable
+  dumbells
+  machine
+}
+
+model Template {
+  id   String @id @default(uuid())
+  name String @unique
+
+  exerciseId String   @map("exercise_id")
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+
+  sets Int
+  reps String
+
+  userId String? @map("user_id")
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("templates")
+}
+
+model Workout {
+  id        String   @id @default(uuid())
+  name      String?
+  timestamp DateTime @default(now())
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  Set Set[]
+
+  @@map("workouts")
+}
+
+model Set {
+  workoutId String  @map("workout_id")
+  workout   Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+
+  id Int @default(autoincrement())
+
+  exerciseId String   @map("exercise_id")
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+
+  weight Decimal?
+  reps   Int
+
+  failure Boolean @default(false)
+
+  @@id([workoutId, id])
+  @@map("sets")
+}
