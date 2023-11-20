@@ -1,0 +1,9 @@
+import { verifyJwt } from "@/http/middlewares/verify-jwt";
+import { FastifyInstance } from "fastify";
+import { create } from "./create";
+
+export async function workoutsRoutes(app: FastifyInstance) {
+    app.addHook('onRequest', verifyJwt)
+
+    app.post('/workouts', create)
+}
