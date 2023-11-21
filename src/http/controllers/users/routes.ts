@@ -13,6 +13,6 @@ export async function usersRoutes(app: FastifyInstance) {
   app.patch('/token/refresh', refresh)
 
   app.get('/me', { onRequest: [verifyJwt] }, profile)
-  app.delete('/users/:id', { onRequest: [verifyJwt] }, deleteUser)
+  app.delete('/me', { onRequest: [verifyJwt] }, deleteUser)
 
 }
