@@ -1,6 +1,7 @@
 import { verifyJwt } from "@/http/middlewares/verify-jwt";
 import { FastifyInstance } from "fastify";
 import { create } from "./create";
+import { deleteWorkout } from "./delete";
 import { getWorkout } from "./workout";
 
 export async function workoutsRoutes(app: FastifyInstance) {
@@ -8,4 +9,5 @@ export async function workoutsRoutes(app: FastifyInstance) {
 
     app.post('/workouts', create)
     app.get('/workouts/:workoutId', getWorkout)
+    app.delete('/workouts/:workoutId', deleteWorkout)
 }

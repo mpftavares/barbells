@@ -22,4 +22,23 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     return workout
   }
 
+  async delete(id: string) {
+    try {
+      const deletedWorkout = await prisma.workout.delete({
+        where: {
+          id,
+        },
+      });
+
+      if (deletedWorkout) {
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      console.error("Error deleting workout:", error);
+      return false;
+    }
+  }
+
 }

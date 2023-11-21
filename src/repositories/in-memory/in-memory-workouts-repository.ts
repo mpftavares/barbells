@@ -27,4 +27,17 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
 
     return workout
   }
+
+  async delete(id: string) {
+
+    const index = this.items.findIndex((item) => item.id === id)
+
+    if (index === -1) {
+      return false
+    }
+
+    this.items.splice(index, 1)
+    return true
+
+  }
 }
