@@ -24,7 +24,7 @@ describe('Create Workout Use Case', () => {
   it('should be able to create a workout providing a timestamp input', async () => {
     const { workout } = await sut.execute({
       name: 'test workout',
-      timestamp: new Date,
+      timestamp: new Date().toISOString(),
       userId: 'user-01'
     })
 
