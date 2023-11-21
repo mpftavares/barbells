@@ -4,10 +4,22 @@ import { WorkoutsRepository } from "../workouts-repository";
 
 export class PrismaWorkoutsRepository implements WorkoutsRepository {
 
-    async create(data: Prisma.WorkoutUncheckedCreateInput) {
-        const workout = await prisma.workout.create({ data })
+  async findById(id: string) {
+    const workout = await prisma.workout.findUnique({
+      where: {
+        id,
+      },
+    })
 
-        return workout
-    }
+    return workout
+  }
+
+  async create(data: Prisma.WorkoutUncheckedCreateInput) {
+    const workout = await prisma.workout.create({
+      data,
+    })
+
+    return workout
+  }
 
 }
