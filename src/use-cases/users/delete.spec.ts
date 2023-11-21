@@ -1,7 +1,7 @@
 
-import { InMemoryUsersRepository } from "../repositories/in-memory/in-memory-users-repository";
+import { InMemoryUsersRepository } from "../../repositories/in-memory/in-memory-users-repository";
 import { beforeEach, describe, expect, it } from "vitest";
-import { DeleteUserProfileUseCase } from "./delete-user-profile";
+import { DeleteUserProfileUseCase } from "./delete";
 import { hash } from "bcryptjs";
 
 let usersRepository: InMemoryUsersRepository

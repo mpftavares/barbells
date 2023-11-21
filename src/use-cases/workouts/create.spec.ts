@@ -1,6 +1,6 @@
 import { InMemoryWorkoutsRepository } from '@/repositories/in-memory/in-memory-workouts-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { CreateWorkoutUseCase } from './create-workout'
+import { CreateWorkoutUseCase } from './create'
 
 let workoutsRepository: InMemoryWorkoutsRepository
 let sut: CreateWorkoutUseCase

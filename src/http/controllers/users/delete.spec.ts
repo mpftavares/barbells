@@ -6,11 +6,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 describe('Delete User Profile Use Case (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
-      })
-    
-      afterAll(async () => {
+    })
+
+    afterAll(async () => {
         await app.close()
-      })
+    })
 
     it('should be able to delete user profile', async () => {
 

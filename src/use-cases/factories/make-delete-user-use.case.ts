@@ -1,5 +1,5 @@
 import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository"
-import { DeleteUserProfileUseCase } from "../delete-user-profile"
+import { DeleteUserProfileUseCase } from "../users/delete"
 
 
 export function makeDeleteUserProfileUseCase() {

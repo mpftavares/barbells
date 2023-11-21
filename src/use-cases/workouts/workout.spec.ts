@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { hash } from 'bcryptjs'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 import { InMemoryWorkoutsRepository } from '@/repositories/in-memory/in-memory-workouts-repository'
-import { GetWorkoutUseCase } from './get-workout'
+import { GetWorkoutUseCase } from './workout'
 
 let workoutsRepository: InMemoryWorkoutsRepository
 let sut: GetWorkoutUseCase
