@@ -27,6 +27,10 @@ export class CreateWorkoutUseCase {
             userId
         })
 
+        if (!workout) {
+            throw new Error('Failed to create workout 🤦');
+        }
+
         return { workout }
     }
 }

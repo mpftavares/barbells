@@ -1,11 +1,11 @@
-import { makeCreateWorkoutUseCase } from "@/use-cases/factories/make-create-gym-use-case";
+import { makeCreateWorkoutUseCase } from "@/use-cases/factories/make-create-workout-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function create(request: FastifyRequest, reply: FastifyReply) {
+export async function createWorkout(request: FastifyRequest, reply: FastifyReply) {
 
     const createWorkoutParamsSchema = z.object({
-        name: z.string().nullable(),
+        name: z.optional(z.string().nullable()),
         timestamp: z.optional(z.string().datetime())
     })
 
