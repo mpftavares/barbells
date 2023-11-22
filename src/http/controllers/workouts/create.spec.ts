@@ -6,7 +6,6 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 describe('Create workout (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
-
   })
 
   afterAll(async () => {

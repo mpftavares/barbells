@@ -11,9 +11,9 @@ export async function deleteUser(request: FastifyRequest, reply: FastifyReply) {
         });
 
         if (isUserDeleted.success) {
-            return reply.status(200).send({ message: 'User profile deleted successfully' });
+            return reply.status(200).send({ message: 'User profile deleted successfully 👌' });
         } else {
-            return reply.status(404).send({ message: 'User profile not found' });
+            return reply.status(404).send({ message: 'User profile not found 🤷' });
         }
     } catch (error) {
         console.error("Error deleting user profile:", error);

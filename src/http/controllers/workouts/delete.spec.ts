@@ -1,7 +1,6 @@
 import { app } from "@/app";
 import { prisma } from "@/lib/prisma";
 import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-user";
-
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
@@ -37,7 +36,7 @@ describe('Delete Workout Use Case (e2e)', () => {
 
         expect(deleteWorkoutResponse.body).toEqual(
             expect.objectContaining({
-                message: 'Workout deleted successfully',
+                message: 'Workout deleted successfully 👌',
             }),
         );
     });

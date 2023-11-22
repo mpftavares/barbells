@@ -10,9 +10,9 @@ export async function deleteWorkout(request: FastifyRequest<{ Params: { workoutI
         });
 
         if (isWorkoutDeleted.success) {
-            return reply.status(200).send({ message: 'Workout deleted successfully' });
+            return reply.status(200).send({ message: 'Workout deleted successfully 👌' });
         } else {
-            return reply.status(404).send({ message: 'Workout not found' });
+            return reply.status(404).send({ message: 'Workout not found 🤷' });
         }
     } catch (error) {
         console.error("Error deleting workout:", error);

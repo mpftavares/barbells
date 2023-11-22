@@ -30,21 +30,17 @@ export class PrismaUsersRepository implements UsersRepository {
   }
 
   async delete(id: string) {
-    try {
-      const deletedUser = await prisma.user.delete({
-        where: {
-          id,
-        },
-      });
 
-      if (deletedUser) {
-        return true;
-      }
+    const deletedUser = await prisma.user.delete({
+      where: {
+        id,
+      },
+    });
 
-      return false;
-    } catch (error) {
-      console.error("Error deleting user:", error);
-      return false;
+    if (deletedUser) {
+      return true;
     }
+
+    return false;
   }
 }

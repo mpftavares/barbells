@@ -25,7 +25,7 @@ describe('Delete User Profile Use Case (e2e)', () => {
 
         expect(deleteUserResponse.body).toEqual(
             expect.objectContaining({
-                message: 'User profile deleted successfully',
+                message: 'User profile deleted successfully 👌',
             }),
         );
     });

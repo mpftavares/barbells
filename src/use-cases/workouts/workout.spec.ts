@@ -24,7 +24,7 @@ describe('Get Workout Profile Use Case', () => {
         expect(workout.name).toEqual('test workout')
     })
 
-    it('should not be able to get Workout profile with wrong id', async () => {
+    it('should not be able to get workout profile with wrong id', async () => {
         await expect(() =>
             sut.execute({ workoutId: 'non-existing-id' }),
         ).rejects.toBeInstanceOf(ResourceNotFoundError)

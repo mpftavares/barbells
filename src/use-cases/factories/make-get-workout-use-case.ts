@@ -3,7 +3,7 @@ import { GetWorkoutUseCase } from '../workouts/workout'
 
 export function makeGetWorkoutUseCase() {
   const workoutsRepository = new PrismaWorkoutsRepository()
-  const useCase = new GetWorkoutUseCase(workoutsRepository)
+  const getWorkoutseCase = new GetWorkoutUseCase(workoutsRepository)
 
-  return useCase
+  return getWorkoutseCase
 }

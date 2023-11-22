@@ -19,7 +19,6 @@ describe('Get User Profile Use Case', () => {
         })
 
         const isWorkoutDeleted = await sut.execute({ workoutId: workoutToDelete.id });
-
         expect(isWorkoutDeleted.success).toBe(true);
 
         const deletedWorkout = await workoutsRepository.findById(workoutToDelete.id);
