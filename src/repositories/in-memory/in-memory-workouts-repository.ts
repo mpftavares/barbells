@@ -40,4 +40,22 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
     return true
 
   }
+
+  async update(id: string, data: Prisma.WorkoutUncheckedUpdateInput) {
+    const index = this.items.findIndex((item) => item.id === id);
+
+    if (index === -1) {
+      return null;
+    }
+
+    const existingWorkout = this.items[index];
+    const updatedWorkout = {
+      ...existingWorkout,
+      ...data,
+    } as Workout;
+
+    this.items[index] = updatedWorkout;
+
+    return updatedWorkout;
+  }
 }

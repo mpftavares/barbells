@@ -41,4 +41,15 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     }
   }
 
+  async update(id: string, data: Prisma.WorkoutUpdateInput) {
+
+    const workout = await prisma.workout.update({
+      data,
+      where: {
+        id,
+      },
+    })
+
+    return workout;
+  }
 }
