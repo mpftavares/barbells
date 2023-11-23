@@ -6,6 +6,7 @@ import fastifyCookie from '@fastify/cookie'
 import { usersRoutes } from './http/controllers/users/routes'
 import { workoutsRoutes } from './http/controllers/workouts/routes'
 import { exercisesRoutes } from './http/controllers/exercises/routes'
+import { setsRoutes } from './http/controllers/sets/routes'
 
 export const app = fastify()
 
@@ -25,6 +26,7 @@ app.register(fastifyCookie)
 app.register(usersRoutes)
 app.register(workoutsRoutes)
 app.register(exercisesRoutes)
+app.register(setsRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {

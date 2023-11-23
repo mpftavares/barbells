@@ -73,7 +73,7 @@ CREATE TABLE "sets" (
     "workout_id" TEXT NOT NULL,
     "exercise_id" TEXT NOT NULL,
     "number" SERIAL NOT NULL,
-    "weight" DECIMAL(65,30),
+    "weight" DOUBLE PRECISION,
     "reps" INTEGER NOT NULL,
 
     CONSTRAINT "sets_pkey" PRIMARY KEY ("id")
