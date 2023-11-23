@@ -69,14 +69,14 @@ CREATE TABLE "workouts" (
 
 -- CreateTable
 CREATE TABLE "sets" (
+    "id" TEXT NOT NULL,
     "workout_id" TEXT NOT NULL,
-    "id" SERIAL NOT NULL,
     "exercise_id" TEXT NOT NULL,
+    "number" SERIAL NOT NULL,
     "weight" DECIMAL(65,30),
     "reps" INTEGER NOT NULL,
-    "failure" BOOLEAN NOT NULL DEFAULT false,
 
-    CONSTRAINT "sets_pkey" PRIMARY KEY ("workout_id","id")
+    CONSTRAINT "sets_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

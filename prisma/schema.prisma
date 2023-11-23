@@ -116,19 +116,16 @@ model Workout {
 }
 
 model Set {
+  id        String  @id @default(uuid())
   workoutId String  @map("workout_id")
   workout   Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
-
-  id Int @default(autoincrement())
 
   exerciseId String   @map("exercise_id")
   exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
 
+  number Int      @default(autoincrement())
   weight Decimal?
   reps   Int
 
-  failure Boolean @default(false)
-
-  @@id([workoutId, id])
   @@map("sets")
 }
