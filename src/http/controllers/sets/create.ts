@@ -7,7 +7,7 @@ export async function createSet(request: FastifyRequest, reply: FastifyReply) {
     const createSetParamsSchema = z.object({
         workoutId: z.string(),
         exerciseId: z.string(),
-        weight: z.number(),
+        weight: z.optional(z.number()),
         reps: z.number()
     })
 

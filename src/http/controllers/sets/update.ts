@@ -6,7 +6,7 @@ export async function updateSet(request: FastifyRequest, reply: FastifyReply) {
 
     const updateSetParamsSchema = z.object({
         id: z.string(),
-        weight: z.number(),
+        weight: z.optional(z.number()),
         reps: z.number()
     })
 

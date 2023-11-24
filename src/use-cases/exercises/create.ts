@@ -4,7 +4,7 @@ import { Equipment, Exercise } from "@prisma/client"
 interface CreateExerciseUseCaseRequest {
     name: string
     equipment: Equipment
-    unilateral: boolean
+    unilateral?: boolean
     userId: string
 }
 

@@ -31,7 +31,6 @@ describe('Create set (e2e)', () => {
       .send({
         workoutId: workout.id,
         exerciseId: exercise.id,
-        weight: 100,
         reps: 10,
 
       })

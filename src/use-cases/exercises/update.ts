@@ -6,7 +6,7 @@ interface UpdateExerciseUseCaseRequest {
   id: string
   name: string
   equipment: Equipment
-  unilateral: boolean
+  unilateral?: boolean
 }
 
 interface UpdateExerciseUseCaseResponse {

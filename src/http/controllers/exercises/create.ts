@@ -14,7 +14,7 @@ export async function createExercise(request: FastifyRequest, reply: FastifyRepl
             "dumbells",
             "machine"
         ]),
-        unilateral: z.boolean()
+        unilateral: z.optional(z.boolean())
     })
 
     const { name, equipment, unilateral } = createExerciseParamsSchema.parse(request.body)

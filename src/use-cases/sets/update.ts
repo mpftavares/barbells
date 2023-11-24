@@ -4,7 +4,7 @@ import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateSetUseCaseRequest {
   id: string
-  weight: number
+  weight?: number
   reps: number
 }
 
