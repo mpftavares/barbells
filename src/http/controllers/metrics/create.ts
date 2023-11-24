@@ -1,4 +1,4 @@
-import { makeCreateMetricUseCase } from "@/use-cases/factories/make-create-metric-use-case";
+import { makeCreateMetricUseCase } from "@/use-cases/factories/metrics/make-create-metric-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

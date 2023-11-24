@@ -1,4 +1,4 @@
-import { makeDeleteMetricUseCase } from "@/use-cases/factories/make-delete-metric-use-case";
+import { makeDeleteMetricUseCase } from "@/use-cases/factories/metrics/make-delete-metric-use-case";
 import { FastifyReply, FastifyRequest } from "fastify"
 
 export async function deleteMetric(request: FastifyRequest<{ Params: { metricId: string } }>, reply: FastifyReply) {

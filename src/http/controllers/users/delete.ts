@@ -1,4 +1,4 @@
-import { makeDeleteUserProfileUseCase } from "@/use-cases/factories/make-delete-user-use-case";
+import { makeDeleteUserProfileUseCase } from "@/use-cases/factories/users/make-delete-user-use-case";
 import { FastifyReply, FastifyRequest } from "fastify"
 
 

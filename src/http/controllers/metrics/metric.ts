@@ -1,4 +1,4 @@
-import { makeGetMetricUseCase } from '@/use-cases/factories/make-get-metric-use-case'
+import { makeGetMetricUseCase } from '@/use-cases/factories/metrics/make-get-metric-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function getMetric(request: FastifyRequest<{ Params: { metricId: string } }>, reply: FastifyReply) {

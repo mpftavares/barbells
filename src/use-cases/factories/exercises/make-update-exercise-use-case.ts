@@ -1,5 +1,5 @@
 import { PrismaExercisesRepository } from "@/repositories/prisma/prisma-exercises-repository"
-import { UpdateExerciseUseCase } from "../exercises/update"
+import { UpdateExerciseUseCase } from "../../exercises/update"
 
 export function makeUpdateExerciseUseCase() {
     const usersRepository = new PrismaExercisesRepository()

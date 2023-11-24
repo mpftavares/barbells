@@ -1,4 +1,4 @@
-import { makeCreateWorkoutUseCase } from "@/use-cases/factories/make-create-workout-use-case";
+import { makeCreateWorkoutUseCase } from "@/use-cases/factories/workouts/make-create-workout-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

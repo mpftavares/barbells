@@ -1,4 +1,4 @@
-import { makeUpdateExerciseUseCase } from "@/use-cases/factories/make-update-exercise-use-case";
+import { makeUpdateExerciseUseCase } from "@/use-cases/factories/exercises/make-update-exercise-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

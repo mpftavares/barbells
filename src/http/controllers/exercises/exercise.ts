@@ -1,4 +1,4 @@
-import { makeGetExerciseUseCase } from '@/use-cases/factories/make-get-exercise-use-case'
+import { makeGetExerciseUseCase } from '@/use-cases/factories/exercises/make-get-exercise-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function getExercise(request: FastifyRequest<{ Params: { exerciseId: string } }>, reply: FastifyReply) {

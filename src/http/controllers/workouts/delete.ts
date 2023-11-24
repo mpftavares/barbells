@@ -1,4 +1,4 @@
-import { makeDeleteWorkoutUseCase } from "@/use-cases/factories/make-delete-workout-use-case";
+import { makeDeleteWorkoutUseCase } from "@/use-cases/factories/workouts/make-delete-workout-use-case";
 import { FastifyReply, FastifyRequest } from "fastify"
 
 export async function deleteWorkout(request: FastifyRequest<{ Params: { workoutId: string } }>, reply: FastifyReply) {

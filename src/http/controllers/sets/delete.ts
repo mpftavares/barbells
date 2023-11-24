@@ -1,4 +1,4 @@
-import { makeDeleteSetUseCase } from "@/use-cases/factories/make-delete-set-use-case";
+import { makeDeleteSetUseCase } from "@/use-cases/factories/sets/make-delete-set-use-case";
 import { FastifyReply, FastifyRequest } from "fastify"
 
 export async function deleteSet(request: FastifyRequest<{ Params: { setId: string } }>, reply: FastifyReply) {

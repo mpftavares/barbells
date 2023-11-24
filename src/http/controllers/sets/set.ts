@@ -1,4 +1,4 @@
-import { makeGetSetUseCase } from '@/use-cases/factories/make-get-set-use-case'
+import { makeGetSetUseCase } from '@/use-cases/factories/sets/make-get-set-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function getSet(request: FastifyRequest<{ Params: { setId: string } }>, reply: FastifyReply) {

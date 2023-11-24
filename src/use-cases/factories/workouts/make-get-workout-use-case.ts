@@ -1,5 +1,5 @@
 import { PrismaWorkoutsRepository } from '@/repositories/prisma/prisma-workouts-repository'
-import { GetWorkoutUseCase } from '../workouts/workout'
+import { GetWorkoutUseCase } from '../../workouts/workout'
 
 export function makeGetWorkoutUseCase() {
   const workoutsRepository = new PrismaWorkoutsRepository()

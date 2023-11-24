@@ -1,5 +1,5 @@
 import { PrismaMetricsRepository } from '@/repositories/prisma/prisma-metrics-repository'
-import { GetMetricUseCase } from '../metrics/metric'
+import { GetMetricUseCase } from '../../metrics/metric'
 
 export function makeGetMetricUseCase() {
     const metricsRepository = new PrismaMetricsRepository()

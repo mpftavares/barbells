@@ -1,5 +1,5 @@
 import { PrismaWorkoutsRepository } from '@/repositories/prisma/prisma-workouts-repository'
-import { DeleteWorkoutUseCase } from '../workouts/delete'
+import { DeleteWorkoutUseCase } from '../../workouts/delete'
 
 export function makeDeleteWorkoutUseCase() {
   const workoutsRepository = new PrismaWorkoutsRepository()

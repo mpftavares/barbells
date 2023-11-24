@@ -1,4 +1,4 @@
-import { makeUpdateSetUseCase } from "@/use-cases/factories/make-update-set-use-case";
+import { makeUpdateSetUseCase } from "@/use-cases/factories/sets/make-update-set-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

@@ -1,4 +1,4 @@
-import { makeDeleteExerciseUseCase } from "@/use-cases/factories/make-delete-exercise-use-case";
+import { makeDeleteExerciseUseCase } from "@/use-cases/factories/exercises/make-delete-exercise-use-case";
 import { FastifyReply, FastifyRequest } from "fastify"
 
 export async function deleteExercise(request: FastifyRequest<{ Params: { exerciseId: string } }>, reply: FastifyReply) {
