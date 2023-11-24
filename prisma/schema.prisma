@@ -45,9 +45,9 @@ model Exercise {
   userId String? @map("user_id")
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  targetMuscles TargetMuscle[]
-  templates     Template[]
-  sets          Set[]
+  targetMuscles     TargetMuscle[]
+  sets              Set[]
+  TemplateExercises TemplateExercises[]
 
   @@unique([name, equipment, unilateral])
   @@map("exercises")
@@ -90,16 +90,19 @@ model Template {
   id   String @id @default(uuid())
   name String @unique
 
-  exerciseId String   @map("exercise_id")
-  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
-
-  sets Int
-  reps String
-
   userId String? @map("user_id")
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("templates")
+}
+
+model TemplateExercises {
+  id String @id @default(uuid())
+
+  exerciseId String   @map("exercise_id")
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+
+  @@map("template_exercises")
 }
 
 model Workout {

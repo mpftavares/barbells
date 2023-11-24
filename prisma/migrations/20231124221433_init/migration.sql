@@ -49,12 +49,17 @@ CREATE TABLE "target_muscles" (
 CREATE TABLE "templates" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "exercise_id" TEXT NOT NULL,
-    "sets" INTEGER NOT NULL,
-    "reps" TEXT NOT NULL,
     "user_id" TEXT,
 
     CONSTRAINT "templates_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "template_exercises" (
+    "id" TEXT NOT NULL,
+    "exercise_id" TEXT NOT NULL,
+
+    CONSTRAINT "template_exercises_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -98,10 +103,10 @@ ALTER TABLE "exercises" ADD CONSTRAINT "exercises_user_id_fkey" FOREIGN KEY ("us
 ALTER TABLE "target_muscles" ADD CONSTRAINT "target_muscles_exercise_id_fkey" FOREIGN KEY ("exercise_id") REFERENCES "exercises"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "templates" ADD CONSTRAINT "templates_exercise_id_fkey" FOREIGN KEY ("exercise_id") REFERENCES "exercises"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "templates" ADD CONSTRAINT "templates_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "templates" ADD CONSTRAINT "templates_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "template_exercises" ADD CONSTRAINT "template_exercises_exercise_id_fkey" FOREIGN KEY ("exercise_id") REFERENCES "exercises"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "workouts" ADD CONSTRAINT "workouts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;

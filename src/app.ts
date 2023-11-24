@@ -8,6 +8,7 @@ import { workoutsRoutes } from './http/controllers/workouts/routes'
 import { exercisesRoutes } from './http/controllers/exercises/routes'
 import { setsRoutes } from './http/controllers/sets/routes'
 import { metricsRoutes } from './http/controllers/metrics/routes'
+import { templatesRoutes } from './http/controllers/templates/routes'
 
 export const app = fastify()
 
@@ -29,6 +30,7 @@ app.register(workoutsRoutes)
 app.register(exercisesRoutes)
 app.register(setsRoutes)
 app.register(metricsRoutes)
+app.register(templatesRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
