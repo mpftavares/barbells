@@ -3,6 +3,7 @@ import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { prisma } from "@/lib/prisma";
+import { createExercise } from "@/utils/test/create-exercise";
 
 describe('Update Exercise Use Case (e2e)', () => {
     beforeAll(async () => {
@@ -19,14 +20,7 @@ describe('Update Exercise Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow();
 
-        const exercise = await prisma.exercise.create({
-            data: {
-                name: 'test exercise',
-                equipment: 'dumbells',
-                unilateral: true,
-                userId: user.id
-            },
-        });
+        const exercise = await createExercise(user)
 
         const updateExerciseResponse = await request(app.server)
             .put(`/exercises/${exercise.id}`)

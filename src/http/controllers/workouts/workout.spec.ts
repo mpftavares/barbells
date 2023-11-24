@@ -1,10 +1,11 @@
 import { app } from '@/app'
 import { prisma } from '@/lib/prisma'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
+import { createWorkout } from '@/utils/test/create-workout'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-describe('Workout (e2e)', () => {
+describe('Get Workout (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
   })
@@ -19,13 +20,7 @@ describe('Workout (e2e)', () => {
 
     const user = await prisma.user.findFirstOrThrow()
 
-    const workout = await prisma.workout.create({
-      data: {
-        name: 'test workout',
-        timestamp: new Date(),
-        userId: user.id,
-      },
-    })
+    const workout = await createWorkout(user)
 
     const response = await request(app.server)
       .get(`/workouts/${workout.id}`)

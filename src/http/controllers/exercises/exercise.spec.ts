@@ -1,6 +1,7 @@
 import { app } from '@/app'
 import { prisma } from '@/lib/prisma'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
+import { createExercise } from '@/utils/test/create-exercise'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
@@ -19,14 +20,7 @@ describe('Get Exercise (e2e)', () => {
 
     const user = await prisma.user.findFirstOrThrow()
 
-    const exercise = await prisma.exercise.create({
-      data: {
-        name: 'test exercise',
-        equipment: 'dumbells',
-        unilateral: true,
-        userId: user.id,
-      },
-    })
+    const exercise = await createExercise(user)
 
     const response = await request(app.server)
       .get(`/exercises/${exercise.id}`)

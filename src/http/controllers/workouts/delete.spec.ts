@@ -1,6 +1,7 @@
 import { app } from "@/app";
 import { prisma } from "@/lib/prisma";
 import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-user";
+import { createWorkout } from "@/utils/test/create-workout";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
@@ -19,13 +20,7 @@ describe('Delete Workout Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow()
 
-        const workout = await prisma.workout.create({
-            data: {
-                name: 'test workout',
-                timestamp: new Date(),
-                userId: user.id,
-            },
-        })
+        const workout = await createWorkout(user)
 
         const deleteWorkoutResponse = await request(app.server)
             .delete(`/workouts/${workout.id}`)

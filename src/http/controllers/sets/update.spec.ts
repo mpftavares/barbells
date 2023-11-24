@@ -3,6 +3,9 @@ import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { prisma } from "@/lib/prisma";
+import { createWorkout } from "@/utils/test/create-workout";
+import { createExercise } from "@/utils/test/create-exercise";
+import { createSet } from "@/utils/test/create-set";
 
 describe('Update Set Use Case (e2e)', () => {
     beforeAll(async () => {
@@ -19,31 +22,11 @@ describe('Update Set Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow()
 
-        const workout = await prisma.workout.create({
-            data: {
-                name: 'test workout',
-                timestamp: new Date,
-                userId: user.id,
-            },
-        });
+        const workout = await createWorkout(user)
 
-        const exercise = await prisma.exercise.create({
-            data: {
-                name: 'test exercise',
-                equipment: 'dumbells',
-                unilateral: true,
-                userId: user.id
-            },
-        });
+        const exercise = await createExercise(user)
 
-        const set = await prisma.set.create({
-            data: {
-                workoutId: workout.id,
-                exerciseId: exercise.id,
-                weight: 100,
-                reps: 10,
-            },
-        })
+        const set = await createSet(workout, exercise)
 
         const updateSetResponse = await request(app.server)
             .put(`/sets/${set.id}`)
