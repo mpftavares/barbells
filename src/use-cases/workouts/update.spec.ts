@@ -26,8 +26,8 @@ it('should update workout name', async () => {
     });
 
     expect(updatedWorkout).toBeDefined();
-    expect(updatedWorkout?.id).toBe(workoutToUpdate.id);
-    expect(updatedWorkout?.name).toBe(updatedName);
+    expect(updatedWorkout.id).toBe(workoutToUpdate.id);
+    expect(updatedWorkout.name).toBe(updatedName);
 });
 
 it('should update workout timestamp', async () => {
@@ -46,6 +46,6 @@ it('should update workout timestamp', async () => {
     });
 
     expect(updatedWorkout).toBeDefined();
-    expect(updatedWorkout?.id).toBe(workoutToUpdate.id);
-    expect(updatedWorkout?.timestamp).toEqual(updatedTimestamp);
+    expect(updatedWorkout.id).toBe(workoutToUpdate.id);
+    expect(updatedWorkout.timestamp).toEqual(updatedTimestamp);
 });

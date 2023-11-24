@@ -3,11 +3,11 @@ import { Exercise } from "@prisma/client";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface GetExerciseUseCaseRequest {
-    exerciseId: string;
+    exerciseId: string
 }
 
 interface GetExerciseUseCaseResponse {
-    exercise: Exercise;
+    exercise: Exercise
 }
 
 export class GetExerciseUseCase {

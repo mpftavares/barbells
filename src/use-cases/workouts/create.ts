@@ -2,8 +2,8 @@ import { WorkoutsRepository } from "@/repositories/workouts-repository"
 import { Workout } from "@prisma/client"
 
 interface CreateWorkoutUseCaseRequest {
-    name?: string | null,
-    timestamp?: string | undefined,
+    name?: string | null
+    timestamp?: string | undefined
     userId: string
 }
 

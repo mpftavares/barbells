@@ -3,9 +3,9 @@ import { Workout } from '@prisma/client'
 import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateWorkoutUseCaseRequest {
-  id: string;
-  name?: string | null,
-  timestamp?: string | undefined,
+  id: string
+  name?: string | null
+  timestamp?: string | undefined
 }
 
 interface UpdateWorkoutUseCaseResponse {

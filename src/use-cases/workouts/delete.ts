@@ -2,11 +2,11 @@ import { WorkoutsRepository } from "@/repositories/workouts-repository";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteWorkoutUseCaseRequest {
-    workoutId: string;
+    workoutId: string
 }
 
 interface DeleteWorkoutUseCaseResponse {
-    success: boolean;
+    success: boolean
 }
 
 export class DeleteWorkoutUseCase {

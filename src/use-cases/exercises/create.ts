@@ -2,10 +2,10 @@ import { ExercisesRepository } from "@/repositories/exercises-repository"
 import { Equipment, Exercise } from "@prisma/client"
 
 interface CreateExerciseUseCaseRequest {
-    name: string,
-    equipment: Equipment,
-    unilateral: boolean,
-    userId: string,
+    name: string
+    equipment: Equipment
+    unilateral: boolean
+    userId: string
 }
 
 interface CreateExerciseUseCaseResponse {

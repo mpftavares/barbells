@@ -4,9 +4,9 @@ import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateExerciseUseCaseRequest {
   id: string
-  name: string,
-  equipment: Equipment,
-  unilateral: boolean,
+  name: string
+  equipment: Equipment
+  unilateral: boolean
 }
 
 interface UpdateExerciseUseCaseResponse {
