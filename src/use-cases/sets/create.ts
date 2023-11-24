@@ -4,7 +4,7 @@ import { Set } from "@prisma/client"
 interface CreateSetUseCaseRequest {
     workoutId: string
     exerciseId: string
-    weight: number
+    weight?: number
     reps: number
 }
 

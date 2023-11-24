@@ -29,7 +29,7 @@ export class InMemorySetsRepository implements SetsRepository {
       workoutId: data.workoutId,
       exerciseId: data.exerciseId,
       number: setNumber,
-      weight: data.weight as Prisma.Decimal,
+      weight: data.weight ?? null,
       reps: data.reps,
     };
 
