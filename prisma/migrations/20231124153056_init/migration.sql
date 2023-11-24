@@ -20,8 +20,8 @@ CREATE TABLE "metrics" (
     "id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "weight" DECIMAL(65,30),
-    "body_fat" DECIMAL(65,30),
+    "weight" DOUBLE PRECISION,
+    "body_fat" DOUBLE PRECISION,
 
     CONSTRAINT "metrics_pkey" PRIMARY KEY ("id")
 );

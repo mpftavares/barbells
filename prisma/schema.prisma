@@ -30,8 +30,8 @@ model Metric {
 
   timestamp DateTime @default(now())
 
-  weight  Decimal?
-  bodyFat Decimal? @map("body_fat")
+  weight  Float?
+  bodyFat Float? @map("body_fat")
 
   @@map("metrics")
 }
