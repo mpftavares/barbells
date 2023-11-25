@@ -6,13 +6,13 @@ import { GetExerciseUseCase } from './exercise'
 let exercisesRepository: InMemoryExercisesRepository
 let sut: GetExerciseUseCase
 
-describe('Get Exercise Profile Use Case', () => {
+describe('Get Exercise Use Case', () => {
     beforeEach(() => {
         exercisesRepository = new InMemoryExercisesRepository()
         sut = new GetExerciseUseCase(exercisesRepository)
     })
 
-    it('should be able to get a exercise by id', async () => {
+    it('should be able to get an exercise by id', async () => {
         const createdExercise = await exercisesRepository.create({
             name: 'test exercise',
             equipment: 'dumbells',
@@ -25,7 +25,7 @@ describe('Get Exercise Profile Use Case', () => {
         expect(exercise.name).toEqual('test exercise')
     })
 
-    it('should not be able to get exercise profile with wrong id', async () => {
+    it('should not be able to get exercise with wrong id', async () => {
         await expect(() =>
             sut.execute({ exerciseId: 'non-existing-id' }),
         ).rejects.toBeInstanceOf(ResourceNotFoundError)

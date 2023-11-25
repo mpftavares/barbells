@@ -41,7 +41,7 @@ export class UpdateMetricUseCase {
     )
 
     if (!updatedMetric) {
-      throw new Error('Failed to update update metric 🤦');
+      throw new Error('Failed to update metric 🤦');
     }
 
     return { updatedMetric };

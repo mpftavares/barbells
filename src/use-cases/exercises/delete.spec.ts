@@ -5,13 +5,13 @@ import { DeleteExerciseUseCase } from "./delete";
 let exercisesRepository: InMemoryExercisesRepository
 let sut: DeleteExerciseUseCase
 
-describe('Get User Profile Use Case', () => {
+describe('Get Exercise  Use Case', () => {
     beforeEach(() => {
         exercisesRepository = new InMemoryExercisesRepository()
         sut = new DeleteExerciseUseCase(exercisesRepository)
     })
 
-    it('should be able to delete user profile', async () => {
+    it('should be able to delete exercise', async () => {
         const exerciseToDelete = await exercisesRepository.create({
             name: 'test exercise',
             equipment: 'dumbells',

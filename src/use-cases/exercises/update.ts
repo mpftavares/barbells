@@ -37,7 +37,7 @@ export class UpdateExerciseUseCase {
     )
 
     if (!updatedExercise) {
-      throw new Error('Failed to update update exercise 🤦');
+      throw new Error('Failed to update exercise 🤦');
     }
 
     return { updatedExercise };

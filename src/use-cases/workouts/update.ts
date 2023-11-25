@@ -35,7 +35,7 @@ export class UpdateWorkoutUseCase {
     )
 
     if (!updatedWorkout) {
-      throw new Error('Failed to update update workout 🤦');
+      throw new Error('Failed to update workout 🤦');
     }
 
     return { updatedWorkout };

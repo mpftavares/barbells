@@ -35,7 +35,7 @@ export class UpdateSetUseCase {
     )
 
     if (!updatedSet) {
-      throw new Error('Failed to update update set 🤦');
+      throw new Error('Failed to update set 🤦');
     }
 
     return { updatedSet };

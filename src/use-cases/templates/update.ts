@@ -33,7 +33,7 @@ export class UpdateTemplateUseCase {
     )
 
     if (!updatedTemplate) {
-      throw new Error('Failed to update update template 🤦');
+      throw new Error('Failed to update template 🤦');
     }
 
     return { updatedTemplate };
