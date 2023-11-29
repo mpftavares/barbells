@@ -48,6 +48,17 @@ export class InMemoryMetricsRepository implements MetricsRepository {
 
     }
 
+    async deleteAll(ids: string[]) {
+        const initialItemCount = this.items.length;
+
+        this.items = this.items.filter((metric) => !ids.includes(metric.id));
+
+        const finalItemCount = this.items.length;
+        const deletedCount = initialItemCount - finalItemCount;
+
+        return deletedCount === ids.length;
+    }
+
     async update(id: string, data: Prisma.MetricUncheckedUpdateInput) {
         const index = this.items.findIndex((item) => item.id === id);
 

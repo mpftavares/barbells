@@ -46,6 +46,21 @@ export class PrismaMetricsRepository implements MetricsRepository {
     return false;
   }
 
+  async deleteAll(ids: string[]) {
+    const deleteResult = await prisma.metric.deleteMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    })
+    if (deleteResult.count === ids.length) {
+      return true;
+    }
+
+    return false;
+  }
+
   async update(id: string, data: Prisma.MetricUpdateInput) {
 
     const metric = await prisma.metric.update({
