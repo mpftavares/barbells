@@ -9,6 +9,9 @@ export class PrismaExercisesRepository implements ExercisesRepository {
       where: {
         id,
       },
+      include: {
+        targets: true,
+      },
     })
 
     return exercise
@@ -16,10 +19,10 @@ export class PrismaExercisesRepository implements ExercisesRepository {
 
   async create(data: Prisma.ExerciseUncheckedCreateInput) {
     const exercise = await prisma.exercise.create({
-      data,
-    })
+      data
+    });
 
-    return exercise
+    return exercise;
   }
 
   async delete(id: string) {

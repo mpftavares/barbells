@@ -45,9 +45,9 @@ model Exercise {
   userId String? @map("user_id")
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  targetMuscles TargetMuscle[]
-  sets          Set[]
-  schemas       Schema[]
+  targets Target[]
+  sets    Set[]
+  schemas Schema[]
 
   @@unique([name, equipment, unilateral])
   @@map("exercises")
@@ -67,7 +67,7 @@ enum Muscle {
   triceps
 }
 
-model TargetMuscle {
+model Target {
   exerciseId String   @map("exercise_id")
   exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
 
@@ -82,7 +82,7 @@ enum Equipment {
   barbell
   bodyweight
   cable
-  dumbells
+  dumbbells
   machine
 }
 

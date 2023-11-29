@@ -15,9 +15,16 @@ describe('Get Exercise Use Case', () => {
     it('should be able to get an exercise by id', async () => {
         const createdExercise = await exercisesRepository.create({
             name: 'test exercise',
-            equipment: 'dumbells',
+            equipment: 'dumbbells',
             unilateral: true,
-            userId: 'user-01'
+            userId: 'user-01',
+            targets: {
+                create: [
+                    { muscle: 'legs' },
+                    { muscle: 'glutes' },
+                    { muscle: 'hamstrings' },
+                ],
+            },
         })
 
         const { exercise } = await sut.execute({ exerciseId: createdExercise.id })

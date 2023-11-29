@@ -14,7 +14,7 @@ describe('Get Exercise  Use Case', () => {
     it('should be able to delete exercise', async () => {
         const exerciseToDelete = await exercisesRepository.create({
             name: 'test exercise',
-            equipment: 'dumbells',
+            equipment: 'dumbbells',
             unilateral: true,
             userId: 'user-01'
         })

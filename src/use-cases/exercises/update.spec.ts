@@ -14,7 +14,7 @@ it('should update exercise', async () => {
 
     const exerciseToUpdate = await exercisesRepository.create({
         name: 'test exercise',
-        equipment: 'dumbells',
+        equipment: 'dumbbells',
         unilateral: true,
         userId: 'user-01'
     });

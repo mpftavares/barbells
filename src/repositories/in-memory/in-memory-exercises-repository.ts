@@ -22,6 +22,10 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
       equipment: data.equipment,
       unilateral: data.unilateral ?? false,
       userId: data.userId ?? null,
+      targets: {
+        create:
+          [data.targets]
+      }
     }
 
     this.items.push(exercise)

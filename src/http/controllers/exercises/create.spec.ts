@@ -21,9 +21,17 @@ describe('Create exercise (e2e)', () => {
       .set('Authorization', `Bearer ${token}`)
       .send({
         name: 'test exercise',
-        equipment: 'dumbells',
+        equipment: 'dumbbells',
         unilateral: true,
-      })
+        targets: {
+          create: [
+            { muscle: 'legs' },
+            { muscle: 'glutes' },
+            { muscle: 'hamstrings' },
+          ],
+        },
+      },
+      )
 
     expect(response.statusCode).toEqual(201)
   })

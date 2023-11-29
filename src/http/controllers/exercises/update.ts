@@ -12,10 +12,10 @@ export async function updateExercise(request: FastifyRequest, reply: FastifyRepl
             "barbell",
             "bodyweight",
             "cable",
-            "dumbells",
+            "dumbbells",
             "machine"
         ]),
-        unilateral: z.optional(z.boolean())
+        unilateral: z.optional(z.boolean()),
     })
 
     const { id, name, equipment, unilateral } = updateExerciseParamsSchema.parse(request.body)
@@ -26,7 +26,7 @@ export async function updateExercise(request: FastifyRequest, reply: FastifyRepl
         id,
         name,
         equipment,
-        unilateral,
+        unilateral
     })
     return reply.status(204).send();
 }

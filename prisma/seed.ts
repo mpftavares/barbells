@@ -6,7 +6,7 @@ async function main() {
         {
             name: 'squat',
             equipment: 'barbell',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'glutes' },
@@ -15,9 +15,9 @@ async function main() {
         },
         {
             name: 'bulgarian split squat',
-            equipment: 'dumbells',
+            equipment: 'dumbbells',
             unilateral: true,
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'glutes' },
@@ -28,7 +28,7 @@ async function main() {
         {
             name: 'leg press',
             equipment: 'machine',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'glutes' },
@@ -40,7 +40,7 @@ async function main() {
         {
             name: 'leg extension',
             equipment: 'machine',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'quadriceps' },
@@ -50,7 +50,7 @@ async function main() {
         {
             name: 'leg curl',
             equipment: 'machine',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'hamstrings' },
@@ -60,7 +60,7 @@ async function main() {
         {
             name: 'deadlift',
             equipment: 'barbell',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'glutes' },
@@ -71,7 +71,7 @@ async function main() {
         {
             name: 'romanian deadlift',
             equipment: 'barbell',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'legs' },
                     { muscle: 'glutes' },
@@ -82,7 +82,7 @@ async function main() {
         {
             name: 'bench press',
             equipment: 'barbell',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'chest' },
                     { muscle: 'shoulders' },
@@ -92,8 +92,8 @@ async function main() {
         },
         {
             name: 'incline bench press',
-            equipment: 'dumbells',
-            targetMuscles: {
+            equipment: 'dumbbells',
+            targets: {
                 create: [
                     { muscle: 'chest' },
                     { muscle: 'shoulders' },
@@ -104,7 +104,7 @@ async function main() {
         {
             name: 'overhead press',
             equipment: 'barbell',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'shoulders' },
                 ],
@@ -112,8 +112,8 @@ async function main() {
         },
         {
             name: 'shoulder press',
-            equipment: 'dumbells',
-            targetMuscles: {
+            equipment: 'dumbbells',
+            targets: {
                 create: [
                     { muscle: 'shoulders' },
                 ],
@@ -121,8 +121,8 @@ async function main() {
         },
         {
             name: 'lateral raise',
-            equipment: 'dumbells',
-            targetMuscles: {
+            equipment: 'dumbbells',
+            targets: {
                 create: [
                     { muscle: 'shoulders' },
                 ],
@@ -131,7 +131,7 @@ async function main() {
         {
             name: 'barbell row',
             equipment: 'barbell',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'back' },
                 ],
@@ -140,7 +140,7 @@ async function main() {
         {
             name: 'lat pulldown',
             equipment: 'cable',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'back' },
                 ],
@@ -149,7 +149,7 @@ async function main() {
         {
             name: 'pull-up',
             equipment: 'bodyweight',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'back' },
                 ],
@@ -158,7 +158,7 @@ async function main() {
         {
             name: 'chin-up',
             equipment: 'bodyweight',
-            targetMuscles: {
+            targets: {
                 create: [
                     { muscle: 'back' },
                     { muscle: 'biceps' },
@@ -167,8 +167,8 @@ async function main() {
         },
         {
             name: 'bicep curl',
-            equipment: 'dumbells',
-            targetMuscles: {
+            equipment: 'dumbbells',
+            targets: {
                 create: [
                     { muscle: 'biceps' },
                 ],
