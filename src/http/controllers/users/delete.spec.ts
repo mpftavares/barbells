@@ -4,8 +4,13 @@ import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 describe('Delete User Profile Use Case (e2e)', () => {
+
+    let authToken: any
+
     beforeAll(async () => {
         await app.ready()
+        const { token } = await createAndAuthenticateUser(app)
+        authToken = token
     })
 
     afterAll(async () => {
@@ -14,11 +19,9 @@ describe('Delete User Profile Use Case (e2e)', () => {
 
     it('should be able to delete user profile', async () => {
 
-        const { token } = await createAndAuthenticateUser(app)
-
         const deleteUserResponse = await request(app.server)
-            .delete('/me')
-            .set('Authorization', `Bearer ${token}`)
+            .delete('/users/me')
+            .set('Authorization', `Bearer ${authToken}`)
             .send();
 
         expect(deleteUserResponse.statusCode).toEqual(200);

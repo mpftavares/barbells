@@ -5,6 +5,7 @@ import { profile } from './profile'
 import { verifyJwt } from '@/http/middlewares/verify-jwt'
 import { refresh } from './refresh'
 import { deleteUser } from './delete'
+import { logout } from './logout'
 
 export async function usersRoutes(app: FastifyInstance) {
   app.post('/users', register)
@@ -12,7 +13,9 @@ export async function usersRoutes(app: FastifyInstance) {
 
   app.patch('/token/refresh', refresh)
 
-  app.get('/me', { onRequest: [verifyJwt] }, profile)
-  app.delete('/me', { onRequest: [verifyJwt] }, deleteUser)
+  app.get('/users/me', { onRequest: [verifyJwt] }, profile)
+  app.delete('/users/me', { onRequest: [verifyJwt] }, deleteUser)
+  
+  app.post('/users/logout', logout)
 
 }
