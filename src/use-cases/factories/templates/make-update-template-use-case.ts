@@ -2,8 +2,8 @@ import { PrismaTemplatesRepository } from "@/repositories/prisma/prisma-template
 import { UpdateTemplateUseCase } from "../../templates/update"
 
 export function makeUpdateTemplateUseCase() {
-  const usersRepository = new PrismaTemplatesRepository()
-  const updateTemplateUseCase = new UpdateTemplateUseCase(usersRepository)
+  const templatesRepository = new PrismaTemplatesRepository()
+  const updateTemplateUseCase = new UpdateTemplateUseCase(templatesRepository)
 
   return updateTemplateUseCase
 }

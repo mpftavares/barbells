@@ -2,8 +2,8 @@ import { PrismaSchemasRepository } from "@/repositories/prisma/prisma-schemas-re
 import { UpdateSchemaUseCase } from "../../schemas/update"
 
 export function makeUpdateSchemaUseCase() {
-    const usersRepository = new PrismaSchemasRepository()
-    const updateSchemaUseCase = new UpdateSchemaUseCase(usersRepository)
+    const schemasRepository = new PrismaSchemasRepository()
+    const updateSchemaUseCase = new UpdateSchemaUseCase(schemasRepository)
 
     return updateSchemaUseCase
 }

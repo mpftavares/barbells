@@ -2,8 +2,8 @@ import { PrismaWorkoutsRepository } from "@/repositories/prisma/prisma-workouts-
 import { UpdateWorkoutUseCase } from "../../workouts/update"
 
 export function makeUpdateWorkoutUseCase() {
-  const usersRepository = new PrismaWorkoutsRepository()
-  const updateWorkoutUseCase = new UpdateWorkoutUseCase(usersRepository)
+  const workoutsRepository = new PrismaWorkoutsRepository()
+  const updateWorkoutUseCase = new UpdateWorkoutUseCase(workoutsRepository)
 
   return updateWorkoutUseCase
 }

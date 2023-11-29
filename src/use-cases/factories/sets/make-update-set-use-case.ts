@@ -2,8 +2,8 @@ import { PrismaSetsRepository } from "@/repositories/prisma/prisma-sets-reposito
 import { UpdateSetUseCase } from "../../sets/update"
 
 export function makeUpdateSetUseCase() {
-  const usersRepository = new PrismaSetsRepository()
-  const updateSetUseCase = new UpdateSetUseCase(usersRepository)
+  const setsRepository = new PrismaSetsRepository()
+  const updateSetUseCase = new UpdateSetUseCase(setsRepository)
 
   return updateSetUseCase
 }

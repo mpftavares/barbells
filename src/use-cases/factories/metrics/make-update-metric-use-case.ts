@@ -2,8 +2,8 @@ import { PrismaMetricsRepository } from "@/repositories/prisma/prisma-metrics-re
 import { UpdateMetricUseCase } from "../../metrics/update"
 
 export function makeUpdateMetricUseCase() {
-    const usersRepository = new PrismaMetricsRepository()
-    const updateMetricUseCase = new UpdateMetricUseCase(usersRepository)
+    const metricsRepository = new PrismaMetricsRepository()
+    const updateMetricUseCase = new UpdateMetricUseCase(metricsRepository)
 
     return updateMetricUseCase
 }
