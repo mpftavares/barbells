@@ -1,9 +1,10 @@
+import { verifyPermission } from "@/http/middlewares/verify-permission";
+import { makeGetMetricUseCase } from "@/use-cases/factories/metrics/make-get-metric-use-case";
 import { makeUpdateMetricUseCase } from "@/use-cases/factories/metrics/make-update-metric-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
 export async function updateMetric(request: FastifyRequest, reply: FastifyReply) {
-
     const updateMetricParamsSchema = z.object({
         id: z.string(),
         timestamp: z.optional(z.string().datetime()),
@@ -12,6 +13,14 @@ export async function updateMetric(request: FastifyRequest, reply: FastifyReply)
     })
 
     const { id, timestamp, weight, bodyFat } = updateMetricParamsSchema.parse(request.body)
+
+    const getMetric = makeGetMetricUseCase()
+
+    const { metric } = await getMetric.execute({
+        metricId: id,
+    })
+
+    verifyPermission(metric.userId, request, reply)
 
     const updateMetricUseCase = makeUpdateMetricUseCase()
 

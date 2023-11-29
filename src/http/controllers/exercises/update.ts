@@ -1,3 +1,5 @@
+import { verifyPermission } from "@/http/middlewares/verify-permission";
+import { makeGetExerciseUseCase } from "@/use-cases/factories/exercises/make-get-exercise-use-case";
 import { makeUpdateExerciseUseCase } from "@/use-cases/factories/exercises/make-update-exercise-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -19,6 +21,14 @@ export async function updateExercise(request: FastifyRequest, reply: FastifyRepl
     })
 
     const { id, name, equipment, unilateral } = updateExerciseParamsSchema.parse(request.body)
+
+    const getExercise = makeGetExerciseUseCase()
+
+    const { exercise } = await getExercise.execute({
+        exerciseId: id,
+    })
+
+    verifyPermission(exercise.userId, request, reply)
 
     const updateExerciseUseCase = makeUpdateExerciseUseCase()
 
