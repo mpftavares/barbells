@@ -4,6 +4,16 @@ import { WorkoutsRepository } from "../workouts-repository";
 
 export class PrismaWorkoutsRepository implements WorkoutsRepository {
 
+  async findByUser(userId: string) {
+    const workouts = await prisma.workout.findMany({
+      where: {
+        userId,
+      }
+    })
+
+    return workouts
+  }
+
   async findById(id: string) {
     const workout = await prisma.workout.findUnique({
       where: {

@@ -5,6 +5,11 @@ import { WorkoutsRepository } from '../workouts-repository'
 export class InMemoryWorkoutsRepository implements WorkoutsRepository {
   public items: Workout[] = []
 
+  async findByUser(userId: string) {
+    return this.items
+      .filter((workout) => workout.userId === userId)
+  }
+
   async findById(id: string) {
     const workout = this.items.find((item) => item.id === id)
 
