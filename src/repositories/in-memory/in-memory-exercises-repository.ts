@@ -15,6 +15,11 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
     return exercise
   }
 
+  async searchByName(query: string) {
+    return this.items
+      .filter((item) => item.name.includes(query))
+  }
+
   async create(data: Prisma.ExerciseUncheckedCreateInput) {
     const exercise = {
       id: randomUUID(),

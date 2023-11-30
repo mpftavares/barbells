@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { $Enums, Prisma } from "@prisma/client";
 import { ExercisesRepository } from "../exercises-repository";
 
 export class PrismaExercisesRepository implements ExercisesRepository {
@@ -15,6 +15,18 @@ export class PrismaExercisesRepository implements ExercisesRepository {
     })
 
     return exercise
+  }
+
+  async searchByName(query: string) {
+    const exercises = await prisma.exercise.findMany({
+      where: {
+        name: {
+          contains: query,
+        },
+      }
+    })
+
+    return exercises
   }
 
   async create(data: Prisma.ExerciseUncheckedCreateInput) {
