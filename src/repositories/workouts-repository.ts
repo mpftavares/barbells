@@ -6,5 +6,5 @@ export interface WorkoutsRepository {
     create(data: Prisma.WorkoutUncheckedCreateInput): Promise<Workout>
     delete(id: string): Promise<boolean>
     update(id: string, data: Prisma.WorkoutUncheckedUpdateInput): Promise<Workout | null>
-
+    deleteAll(ids: string[]): Promise<boolean>
 }

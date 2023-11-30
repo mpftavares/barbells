@@ -46,6 +46,17 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
 
   }
 
+  async deleteAll(ids: string[]) {
+    const initialItemCount = this.items.length;
+
+    this.items = this.items.filter((workout) => !ids.includes(workout.id));
+
+    const finalItemCount = this.items.length;
+    const deletedCount = initialItemCount - finalItemCount;
+
+    return deletedCount === ids.length;
+  }
+
   async update(id: string, data: Prisma.WorkoutUncheckedUpdateInput) {
     const index = this.items.findIndex((item) => item.id === id);
 

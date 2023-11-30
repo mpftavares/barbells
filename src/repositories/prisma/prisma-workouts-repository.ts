@@ -47,6 +47,21 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     return false;
   }
 
+  async deleteAll(ids: string[]) {
+    const deleteResult = await prisma.workout.deleteMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    })
+    if (deleteResult.count === ids.length) {
+      return true;
+    }
+
+    return false;
+  }
+
   async update(id: string, data: Prisma.WorkoutUpdateInput) {
 
     const workout = await prisma.workout.update({
