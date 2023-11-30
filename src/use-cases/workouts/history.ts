@@ -1,20 +1,20 @@
 import { WorkoutsRepository } from '@/repositories/workouts-repository'
 import { Workout } from '@prisma/client'
 
-interface FetchUserWorkoutsHistoryUseCaseRequest {
+interface UserWorkoutsHistoryUseCaseRequest {
     userId: string
 }
 
-interface FetchUserWorkoutsHistoryUseCaseResponse {
+interface UserWorkoutsHistoryUseCaseResponse {
     workouts: Workout[]
 }
 
-export class FetchUserWorkoutsHistoryUseCase {
+export class UserWorkoutsHistoryUseCase {
     constructor(private workoutsRepository: WorkoutsRepository) { }
 
     async execute({
         userId,
-    }: FetchUserWorkoutsHistoryUseCaseRequest): Promise<FetchUserWorkoutsHistoryUseCaseResponse> {
+    }: UserWorkoutsHistoryUseCaseRequest): Promise<UserWorkoutsHistoryUseCaseResponse> {
         const workouts = await this.workoutsRepository.findByUserId(
             userId,
         )

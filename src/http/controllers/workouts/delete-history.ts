@@ -1,5 +1,5 @@
 
-import { makeDeleteUserWorkoutsHistoryUseCase } from '@/use-cases/factories/workouts/make-delete-workout-history-use-case';
+import { makeDeleteUserWorkoutsHistoryUseCase } from '@/use-cases/factories/workouts/make-delete-user-workout-history-use-case';
 import { FastifyReply, FastifyRequest } from 'fastify';
 
 export async function deleteWorkoutHistory(request: FastifyRequest, reply: FastifyReply) {

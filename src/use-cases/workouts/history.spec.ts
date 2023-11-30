@@ -1,15 +1,15 @@
 import { InMemoryWorkoutsRepository } from '@/repositories/in-memory/in-memory-workouts-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { FetchUserWorkoutsHistoryUseCase } from './history'
+import { UserWorkoutsHistoryUseCase } from './history'
 
 
 let workoutsRepository: InMemoryWorkoutsRepository
-let sut: FetchUserWorkoutsHistoryUseCase
+let sut: UserWorkoutsHistoryUseCase
 
 describe('User Workout History Use Case', () => {
     beforeEach(async () => {
         workoutsRepository = new InMemoryWorkoutsRepository()
-        sut = new FetchUserWorkoutsHistoryUseCase(workoutsRepository)
+        sut = new UserWorkoutsHistoryUseCase(workoutsRepository)
     })
 
     it('should be able to fetch user workout history', async () => {

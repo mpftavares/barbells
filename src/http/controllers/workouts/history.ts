@@ -1,11 +1,11 @@
-import { makeFetchUserWorkoutsHistoryUseCase } from '@/use-cases/factories/workouts/make-workout-history-use-case'
+import { makeUserWorkoutsHistoryUseCase } from '@/use-cases/factories/workouts/make-user-workout-history-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function workoutHistory(request: FastifyRequest, reply: FastifyReply) {
 
-    const fetchUserWorkoutsHistoryUseCase = makeFetchUserWorkoutsHistoryUseCase()
+    const userWorkoutsHistoryUseCase = makeUserWorkoutsHistoryUseCase()
 
-    const { workouts } = await fetchUserWorkoutsHistoryUseCase.execute({
+    const { workouts } = await userWorkoutsHistoryUseCase.execute({
         userId: request.user.sub,
     })
 

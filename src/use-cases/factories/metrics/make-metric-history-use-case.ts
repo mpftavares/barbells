@@ -1,9 +1,9 @@
 import { PrismaMetricsRepository } from "@/repositories/prisma/prisma-metrics-repository"
-import { FetchUserMetricsHistoryUseCase } from "@/use-cases/metrics/history"
+import { UserMetricsHistoryUseCase } from "@/use-cases/metrics/history"
 
-export function makeFetchUserMetricsHistoryUseCase() {
+export function makeUserMetricsHistoryUseCase() {
     const metricsRepository = new PrismaMetricsRepository()
-    const fetchUserMetricsHistoryUseCase = new FetchUserMetricsHistoryUseCase(metricsRepository)
+    const userMetricsHistoryUseCase = new UserMetricsHistoryUseCase(metricsRepository)
 
-    return fetchUserMetricsHistoryUseCase
+    return userMetricsHistoryUseCase
 }

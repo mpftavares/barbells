@@ -1,20 +1,20 @@
 import { MetricsRepository } from '@/repositories/metrics-repository'
 import { Metric } from '@prisma/client'
 
-interface FetchUserMetricsHistoryUseCaseRequest {
+interface UserMetricsHistoryUseCaseRequest {
   userId: string
 }
 
-interface FetchUserMetricsHistoryUseCaseResponse {
+interface UserMetricsHistoryUseCaseResponse {
   metrics: Metric[]
 }
 
-export class FetchUserMetricsHistoryUseCase {
+export class UserMetricsHistoryUseCase {
   constructor(private metricsRepository: MetricsRepository) { }
 
   async execute({
     userId,
-  }: FetchUserMetricsHistoryUseCaseRequest): Promise<FetchUserMetricsHistoryUseCaseResponse> {
+  }: UserMetricsHistoryUseCaseRequest): Promise<UserMetricsHistoryUseCaseResponse> {
     const metrics = await this.metricsRepository.findByUserId(
       userId,
     )
