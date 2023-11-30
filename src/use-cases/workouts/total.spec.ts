@@ -5,13 +5,13 @@ import { UserWorkoutTotalUseCase } from './total'
 let workoutsRepository: InMemoryWorkoutsRepository
 let sut: UserWorkoutTotalUseCase
 
-describe('Fetch User Check-in History Use Case', () => {
+describe('User Workout Total Use Case', () => {
     beforeEach(async () => {
         workoutsRepository = new InMemoryWorkoutsRepository()
         sut = new UserWorkoutTotalUseCase(workoutsRepository)
     })
 
-    it('should be able to fetch check-in history', async () => {
+    it('should be able to count user workout total', async () => {
         await workoutsRepository.create({
             name: 'test workout',
             timestamp: undefined,
@@ -28,10 +28,6 @@ describe('Fetch User Check-in History Use Case', () => {
             userId: 'user-01',
         })
 
-        expect(count).toHaveLength(2)
-        expect(count).toEqual([
-            expect.objectContaining({ name: 'test workout' }),
-            expect.objectContaining({ name: 'another test workout' }),
-        ])
+        expect(count).toEqual(2)
     })
 })

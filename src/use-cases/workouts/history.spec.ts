@@ -6,13 +6,13 @@ import { FetchUserWorkoutsHistoryUseCase } from './history'
 let workoutsRepository: InMemoryWorkoutsRepository
 let sut: FetchUserWorkoutsHistoryUseCase
 
-describe('Fetch User Check-in History Use Case', () => {
+describe('User Workout History Use Case', () => {
     beforeEach(async () => {
         workoutsRepository = new InMemoryWorkoutsRepository()
         sut = new FetchUserWorkoutsHistoryUseCase(workoutsRepository)
     })
 
-    it('should be able to fetch check-in history', async () => {
+    it('should be able to fetch user workout history', async () => {
         await workoutsRepository.create({
             name: 'test workout',
             timestamp: undefined,

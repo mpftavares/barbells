@@ -5,7 +5,7 @@ import { createWorkout } from "@/utils/test/create-workout";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-describe('Delete Workout Use Case (e2e)', () => {
+describe('Delete Workout (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })

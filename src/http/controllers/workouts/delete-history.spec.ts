@@ -4,7 +4,7 @@ import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-describe('Delete All User Workouts History (e2e)', () => {
+describe('Delete User Workouts History (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })
@@ -13,7 +13,7 @@ describe('Delete All User Workouts History (e2e)', () => {
         await app.close()
     })
 
-    it('should be able to delete all user workouts history', async () => {
+    it('should be able to delete all user workouts', async () => {
         const { token } = await createAndAuthenticateUser(app)
 
         const user = await prisma.user.findFirstOrThrow()

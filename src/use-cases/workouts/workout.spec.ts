@@ -6,13 +6,13 @@ import { GetWorkoutUseCase } from './workout'
 let workoutsRepository: InMemoryWorkoutsRepository
 let sut: GetWorkoutUseCase
 
-describe('Get Workout Profile Use Case', () => {
+describe('Get Workout Use Case', () => {
     beforeEach(() => {
         workoutsRepository = new InMemoryWorkoutsRepository()
         sut = new GetWorkoutUseCase(workoutsRepository)
     })
 
-    it('should be able to get a workout by id', async () => {
+    it('should be able to get workout by id', async () => {
         const createdWorkout = await workoutsRepository.create({
             name: 'test workout',
             timestamp: new Date().toISOString(),

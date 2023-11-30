@@ -2,8 +2,6 @@ import { InMemoryWorkoutsRepository } from '@/repositories/in-memory/in-memory-w
 import { beforeEach, describe, expect, it } from 'vitest';
 import { DeleteUserWorkoutsHistoryUseCase } from './delete-history';
 
-
-
 let workoutsRepository: InMemoryWorkoutsRepository;
 let sut: DeleteUserWorkoutsHistoryUseCase;
 

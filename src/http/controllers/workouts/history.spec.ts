@@ -4,7 +4,7 @@ import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-describe('Workout History (e2e)', () => {
+describe('User Workout History (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })
@@ -13,7 +13,7 @@ describe('Workout History (e2e)', () => {
         await app.close()
     })
 
-    it('should be able to list the history of workouts', async () => {
+    it('should be able to list workout history', async () => {
         const { token } = await createAndAuthenticateUser(app)
 
         const user = await prisma.user.findFirstOrThrow()

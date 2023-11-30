@@ -5,7 +5,7 @@ import request from "supertest";
 import { prisma } from "@/lib/prisma";
 import { createWorkout } from "@/utils/test/create-workout";
 
-describe('Update Workout Use Case (e2e)', () => {
+describe('Update Workout (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })
