@@ -24,6 +24,18 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
     return workout
   }
 
+  async findByDateRange(userId: string, startDate: Date, endDate: Date) {
+
+    const endOfEndDate = new Date(endDate)
+    endOfEndDate.setDate(endDate.getDate() + 1)
+
+    return this.items.filter((workout) => {
+      return workout.userId === userId &&
+        workout.timestamp >= startDate &&
+        workout.timestamp < endOfEndDate;
+    });
+  }
+
   async create(data: Prisma.WorkoutUncheckedCreateInput) {
     const workout = {
       id: randomUUID(),
