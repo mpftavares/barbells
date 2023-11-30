@@ -14,6 +14,16 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     return workouts
   }
 
+  async countByUser(userId: string) {
+    const count = await prisma.workout.count({
+      where: {
+        userId,
+      },
+    })
+
+    return count
+  }
+
   async findById(id: string) {
     const workout = await prisma.workout.findUnique({
       where: {

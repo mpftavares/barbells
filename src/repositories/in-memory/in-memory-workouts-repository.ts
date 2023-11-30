@@ -10,6 +10,10 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
       .filter((workout) => workout.userId === userId)
   }
 
+  async countByUser(userId: string) {
+    return this.items.filter((workout) => workout.userId === userId).length
+  }
+
   async findById(id: string) {
     const workout = this.items.find((item) => item.id === id)
 
