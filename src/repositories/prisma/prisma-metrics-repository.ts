@@ -4,7 +4,7 @@ import { MetricsRepository } from "../metrics-repository";
 
 export class PrismaMetricsRepository implements MetricsRepository {
 
-  async findByUser(userId: string) {
+  async findByUserId(userId: string) {
     const metrics = await prisma.metric.findMany({
       where: {
         userId,

@@ -29,7 +29,7 @@ describe('Delete User Workouts History Use Case', () => {
 
         expect(isDeleted.success).toBe(true);
 
-        const workouts = await workoutsRepository.findByUser('user-01');
+        const workouts = await workoutsRepository.findByUserId('user-01');
 
         expect(workouts).toHaveLength(0);
     });

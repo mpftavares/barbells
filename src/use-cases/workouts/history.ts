@@ -15,7 +15,7 @@ export class FetchUserWorkoutsHistoryUseCase {
     async execute({
         userId,
     }: FetchUserWorkoutsHistoryUseCaseRequest): Promise<FetchUserWorkoutsHistoryUseCaseResponse> {
-        const workouts = await this.workoutsRepository.findByUser(
+        const workouts = await this.workoutsRepository.findByUserId(
             userId,
         )
 

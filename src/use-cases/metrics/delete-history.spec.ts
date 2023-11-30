@@ -33,7 +33,7 @@ describe('Delete User Metrics History Use Case', () => {
 
         expect(isDeleted.success).toBe(true);
 
-        const metrics = await metricsRepository.findByUser('user-01');
+        const metrics = await metricsRepository.findByUserId('user-01');
 
         expect(metrics).toHaveLength(0);
     });

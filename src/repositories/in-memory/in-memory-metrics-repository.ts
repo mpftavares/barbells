@@ -5,7 +5,7 @@ import { MetricsRepository } from '../metrics-repository'
 export class InMemoryMetricsRepository implements MetricsRepository {
     public items: Metric[] = []
 
-    async findByUser(userId: string) {
+    async findByUserId(userId: string) {
         return this.items
             .filter((metric) => metric.userId === userId)
     }

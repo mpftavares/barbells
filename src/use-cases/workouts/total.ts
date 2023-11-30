@@ -14,7 +14,7 @@ export class UserWorkoutTotalUseCase {
     async execute({
         userId,
     }: UserWorkoutTotalUseCaseRequest): Promise<UserWorkoutTotalUseCaseResponse> {
-        const count = await this.workoutsRepository.countByUser(
+        const count = await this.workoutsRepository.countByUserId(
             userId,
         )
 

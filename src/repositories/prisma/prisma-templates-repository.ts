@@ -22,7 +22,7 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
         return template
     }
 
-    async findByUser(userId: string) {
+    async findByUserId(userId: string) {
         const templates = await prisma.template.findMany({
             where: {
                 userId,

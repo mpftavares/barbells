@@ -15,7 +15,7 @@ export class InMemoryTemplatesRepository implements TemplatesRepository {
     return template
   }
 
-  async findByUser(userId: string) {
+  async findByUserId(userId: string) {
     return this.items
       .filter((template) => template.userId === userId)
   }

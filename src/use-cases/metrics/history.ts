@@ -15,7 +15,7 @@ export class FetchUserMetricsHistoryUseCase {
   async execute({
     userId,
   }: FetchUserMetricsHistoryUseCaseRequest): Promise<FetchUserMetricsHistoryUseCaseResponse> {
-    const metrics = await this.metricsRepository.findByUser(
+    const metrics = await this.metricsRepository.findByUserId(
       userId,
     )
 

@@ -5,12 +5,12 @@ import { WorkoutsRepository } from '../workouts-repository'
 export class InMemoryWorkoutsRepository implements WorkoutsRepository {
   public items: Workout[] = []
 
-  async findByUser(userId: string) {
+  async findByUserId(userId: string) {
     return this.items
       .filter((workout) => workout.userId === userId)
   }
 
-  async countByUser(userId: string) {
+  async countByUserId(userId: string) {
     return this.items.filter((workout) => workout.userId === userId).length
   }
 

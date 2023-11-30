@@ -4,7 +4,7 @@ import { WorkoutsRepository } from "../workouts-repository";
 
 export class PrismaWorkoutsRepository implements WorkoutsRepository {
 
-  async findByUser(userId: string) {
+  async findByUserId(userId: string) {
     const workouts = await prisma.workout.findMany({
       where: {
         userId,
@@ -14,7 +14,7 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     return workouts
   }
 
-  async countByUser(userId: string) {
+  async countByUserId(userId: string) {
     const count = await prisma.workout.count({
       where: {
         userId,

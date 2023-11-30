@@ -15,7 +15,7 @@ export class DeleteUserMetricsHistoryUseCase {
   async execute({
     userId,
   }: DeleteAllUserMetricsHistoryUseCaseRequest): Promise<DeleteAllUserMetricsHistoryUseCaseResponse> {
-    const userMetrics = await this.metricsRepository.findByUser(userId);
+    const userMetrics = await this.metricsRepository.findByUserId(userId);
 
     if (userMetrics.length === 0) {
       throw new ResourceNotFoundError();

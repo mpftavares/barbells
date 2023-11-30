@@ -15,7 +15,7 @@ export class DeleteUserWorkoutsHistoryUseCase {
   async execute({
     userId,
   }: DeleteAllUserWorkoutsHistoryUseCaseRequest): Promise<DeleteAllUserWorkoutsHistoryUseCaseResponse> {
-    const userWorkouts = await this.workoutsRepository.findByUser(userId);
+    const userWorkouts = await this.workoutsRepository.findByUserId(userId);
 
     if (userWorkouts.length === 0) {
       throw new ResourceNotFoundError();
