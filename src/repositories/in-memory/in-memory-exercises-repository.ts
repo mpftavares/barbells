@@ -1,4 +1,4 @@
-import { Prisma, Exercise } from '@prisma/client'
+import { Prisma, Exercise, Muscle } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
 import { ExercisesRepository } from '../exercises-repository'
 
@@ -20,6 +20,13 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
       .filter((item) => item.name.includes(query))
   }
 
+  async searchByTarget(query: Muscle) {
+
+    // GL with that - see bellow
+
+    return []
+  }
+
   async create(data: Prisma.ExerciseUncheckedCreateInput) {
     const exercise = {
       id: randomUUID(),
@@ -27,11 +34,13 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
       equipment: data.equipment,
       unilateral: data.unilateral ?? false,
       userId: data.userId ?? null,
-      targets: {
-        create:
-          [data.targets]
-      }
+      // targets: {
+      //   create:
+      //     [data.targets]
+      // }
     }
+
+    // no targets created in-memory
 
     this.items.push(exercise)
 

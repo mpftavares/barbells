@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Muscle, Prisma } from "@prisma/client";
 import { ExercisesRepository } from "../exercises-repository";
 
 export class PrismaExercisesRepository implements ExercisesRepository {
@@ -26,6 +26,20 @@ export class PrismaExercisesRepository implements ExercisesRepository {
       }
     })
 
+    return exercises
+  }
+
+  async searchByTarget(query: Muscle) {
+     const exercises = await prisma.exercise.findMany({
+      where: {
+        targets: {
+          some: {
+            muscle: query,
+          },
+        },
+      },
+    });
+    
     return exercises
   }
 
