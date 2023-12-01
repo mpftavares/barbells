@@ -3,6 +3,7 @@ import { Exercise, Muscle } from '@prisma/client'
 
 interface SearchExerciseByTargetuseCaseRequest {
   query: Muscle
+  userId: string
 }
 
 interface SearchExerciseByTargetuseCaseResponse {
@@ -13,9 +14,9 @@ export class SearchExerciseByTargetuseCase {
   constructor(private exercisesRepository: ExercisesRepository) { }
 
   async execute({
-    query,
+    query, userId
   }: SearchExerciseByTargetuseCaseRequest): Promise<SearchExerciseByTargetuseCaseResponse> {
-    const exercises = await this.exercisesRepository.searchByTarget(query)
+    const exercises = await this.exercisesRepository.searchByTarget(query, userId)
 
     return {
       exercises,

@@ -3,6 +3,7 @@ import { Exercise } from '@prisma/client'
 
 interface SearchExerciseByNameUseCaseRequest {
   query: string
+  userId: string
 }
 
 interface SearchExerciseByNameUseCaseResponse {
@@ -14,8 +15,9 @@ export class SearchExerciseByNameUseCase {
 
   async execute({
     query,
+    userId
   }: SearchExerciseByNameUseCaseRequest): Promise<SearchExerciseByNameUseCaseResponse> {
-    const exercises = await this.exercisesRepository.searchByName(query)
+    const exercises = await this.exercisesRepository.searchByName(query, userId)
 
     return {
       exercises,

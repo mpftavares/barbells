@@ -40,7 +40,8 @@ describe('Search Exercises Use Case', () => {
         })
 
         const { exercises } = await sut.execute({
-            query: 'hamstrings'
+            userId: 'user-01',
+            query: 'glutes'
         })
 
         // no test bc no in memory targets

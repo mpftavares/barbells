@@ -26,7 +26,7 @@ describe('Search Exercises Use Case', () => {
         })
 
         await exercisesRepository.create({
-            name: 'another test exercise',
+            name: 'test exercise',
             equipment: 'dumbbells',
             unilateral: true,
             userId: 'user-01',
@@ -39,10 +39,45 @@ describe('Search Exercises Use Case', () => {
         })
 
         const { exercises } = await sut.execute({
-            query: 'another test'
+            userId: 'user-01',
+            query: 'test'
+        })
+
+        expect(exercises).toHaveLength(2)
+    })
+
+    it('shouldnt be able to search other users exercises by name', async () => {
+        await exercisesRepository.create({
+            name: 'test exercise',
+            equipment: 'dumbbells',
+            unilateral: true,
+            userId: 'user-01',
+            targets: {
+                create: [
+                    { muscle: 'glutes' },
+                    { muscle: 'hamstrings' },
+                ],
+            },
+        })
+
+        await exercisesRepository.create({
+            name: 'test exercise',
+            equipment: 'dumbbells',
+            unilateral: true,
+            userId: 'user-02',
+            targets: {
+                create: [
+                    { muscle: 'glutes' },
+                    { muscle: 'hamstrings' },
+                ],
+            },
+        })
+
+        const { exercises } = await sut.execute({
+            userId: 'user-01',
+            query: 'test'
         })
 
         expect(exercises).toHaveLength(1)
-        expect(exercises).toEqual([expect.objectContaining({ name: 'another test exercise' })])
     })
 })

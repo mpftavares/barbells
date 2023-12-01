@@ -13,7 +13,8 @@ export async function searchExercisesByName(request: FastifyRequest, reply: Fast
   const searchExercisesByNameUseCase = makeSearchExerciseUseCase()
 
   const { exercises } = await searchExercisesByNameUseCase.execute({
-    query
+    query,
+    userId: request.user.sub
   })
 
   return reply.status(200).send({

@@ -17,30 +17,59 @@ export class PrismaExercisesRepository implements ExercisesRepository {
     return exercise
   }
 
-  async searchByName(query: string) {
+  async searchByName(query: string, userId: string) {
     const exercises = await prisma.exercise.findMany({
       where: {
-        name: {
-          contains: query,
-        },
-      }
-    })
-
-    return exercises
-  }
-
-  async searchByTarget(query: Muscle) {
-     const exercises = await prisma.exercise.findMany({
-      where: {
-        targets: {
-          some: {
-            muscle: query,
+        AND: [
+          {
+            OR: [
+              {
+                userId
+              },
+              {
+                userId: null,
+              },
+            ],
           },
-        },
+          {
+            name: {
+              contains: query,
+            },
+          },
+        ],
       },
     });
-    
-    return exercises
+
+    return exercises;
+  }
+
+  async searchByTarget(query: Muscle, userId: string) {
+    const exercises = await prisma.exercise.findMany({
+      where: {
+        AND: [
+          {
+            OR: [
+              {
+                userId
+              },
+              {
+                userId: null,
+              },
+            ],
+          },
+          {
+            targets: {
+              some: {
+                muscle: query,
+              },
+            },
+          },
+        ],
+      },
+
+    });
+
+    return exercises;
   }
 
   async create(data: Prisma.ExerciseUncheckedCreateInput) {

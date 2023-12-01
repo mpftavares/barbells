@@ -36,16 +36,12 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
 
   async findByDateRange(userId: string, startDate: Date, endDate: Date) {
 
-    const endOfEndDate = new Date(endDate);
-    endOfEndDate.setHours(23, 59, 59, 999);
-
     const workouts = await prisma.workout.findMany({
-
       where: {
         userId,
         timestamp: {
           gte: new Date(startDate),
-          lt: endOfEndDate,
+          lte: new Date(endDate),
         }
       }
     })

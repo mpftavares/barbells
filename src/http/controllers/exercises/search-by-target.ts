@@ -24,7 +24,8 @@ export async function searchExercisesByTarget(request: FastifyRequest, reply: Fa
   const searchExercisesByTargetUseCase = makeSearchExerciseUseCase()
 
   const { exercises } = await searchExercisesByTargetUseCase.execute({
-    query
+    query,
+    userId: request.user.sub
   })
 
   return reply.status(200).send({
