@@ -9,15 +9,15 @@ export class InMemoryTargetsRepository implements TargetsRepository {
       .filter((target) => target.exerciseId === exerciseId)
   }
 
-  async create(data: Prisma.TargetUncheckedCreateInput) {
-    const target = {
-      exerciseId: data.exerciseId,
-      muscle: data.muscle
-    }
+  // async create(data: Prisma.TargetUncheckedCreateInput) {
+  //   const target = {
+  //     exerciseId: data.exerciseId,
+  //     muscle: data.muscle
+  //   }
 
-    this.items.push(target)
+  //   this.items.push(target)
 
-    return target
-  }
+  //   return target
+  // }
 
 }

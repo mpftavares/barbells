@@ -14,11 +14,11 @@ export class PrismaTargetsRepository implements TargetsRepository {
     return target
   }
 
-  async create(data: Prisma.TargetUncheckedCreateInput) {
-    const target = await prisma.target.create({
-      data,
-    })
+  // async create(data: Prisma.TargetUncheckedCreateInput) {
+  //   const target = await prisma.target.create({
+  //     data,
+  //   })
 
-    return target
-  }
+  //   return target
+  // }
 }

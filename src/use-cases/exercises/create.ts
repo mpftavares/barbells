@@ -1,5 +1,4 @@
 import { ExercisesRepository } from "@/repositories/exercises-repository"
-import { TargetsRepository } from "@/repositories/targets-repository"
 import { Equipment, Exercise, Muscle } from "@prisma/client"
 
 interface CreateExerciseUseCaseRequest {
@@ -21,7 +20,6 @@ interface CreateExerciseUseCaseResponse {
 export class CreateExerciseUseCase {
     constructor(
         private exercisesRepository: ExercisesRepository,
-        private targetsRepository: TargetsRepository
     ) { }
 
     async execute({
@@ -41,17 +39,6 @@ export class CreateExerciseUseCase {
 
         if (!exercise) {
             throw new Error('Failed to create exercise 🤦');
-        }
-
-        const createdTargets: Muscle[] = [];
-        if (targets && targets.create) {
-            for (const target of targets.create) {
-                const createdTarget = await this.targetsRepository.create({
-                    exerciseId: exercise.id,
-                    muscle: target.muscle
-                });
-                createdTargets.push(createdTarget.muscle);
-            }
         }
 
         return { exercise };

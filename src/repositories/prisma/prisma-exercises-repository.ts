@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { $Enums, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ExercisesRepository } from "../exercises-repository";
 
 export class PrismaExercisesRepository implements ExercisesRepository {
