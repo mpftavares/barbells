@@ -26,7 +26,6 @@ describe('Create exercise (e2e)', () => {
         unilateral: true,
         targets: {
           create: [
-            { muscle: 'legs' },
             { muscle: 'glutes' },
             { muscle: 'hamstrings' },
           ],
@@ -44,7 +43,7 @@ describe('Create exercise (e2e)', () => {
       },
     })
 
-    expect(targets.length).toEqual(3)
+    expect(targets.length).toEqual(2)
 
 
   })

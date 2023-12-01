@@ -24,7 +24,6 @@ describe('Search Exercises (e2e)', () => {
                 unilateral: true,
                 targets: {
                     create: [
-                        { muscle: 'legs' },
                         { muscle: 'glutes' },
                         { muscle: 'hamstrings' },
                     ],
@@ -40,7 +39,6 @@ describe('Search Exercises (e2e)', () => {
                 unilateral: true,
                 targets: {
                     create: [
-                        { muscle: 'legs' },
                         { muscle: 'glutes' },
                         { muscle: 'hamstrings' },
                     ],

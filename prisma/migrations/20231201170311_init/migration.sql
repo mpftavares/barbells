@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "Muscle" AS ENUM ('abs', 'back', 'biceps', 'calfs', 'chest', 'glutes', 'hamstrings', 'legs', 'quadriceps', 'shoulders', 'triceps');
+CREATE TYPE "Muscle" AS ENUM ('abs', 'back', 'biceps', 'calfs', 'chest', 'glutes', 'hamstrings', 'quadriceps', 'shoulders', 'triceps');
 
 -- CreateEnum
 CREATE TYPE "Equipment" AS ENUM ('assisted', 'barbell', 'bodyweight', 'cable', 'dumbbells', 'machine');

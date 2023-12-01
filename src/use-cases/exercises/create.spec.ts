@@ -22,7 +22,6 @@ describe('Create Exercise Use Case', () => {
       userId: 'user-01',
       targets: {
         create: [
-          { muscle: 'legs' },
           { muscle: 'glutes' },
           { muscle: 'hamstrings' },
         ],

@@ -13,7 +13,6 @@ export async function searchExercisesByTarget(request: FastifyRequest, reply: Fa
       'chest',
       'glutes',
       'hamstrings',
-      'legs',
       'quadriceps',
       'shoulders',
       'triceps',

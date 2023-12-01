@@ -8,7 +8,7 @@ async function main() {
             equipment: 'barbell',
             targets: {
                 create: [
-                    { muscle: 'legs' },
+                    { muscle: 'quadriceps' },
                     { muscle: 'glutes' },
                 ],
             },
@@ -19,9 +19,8 @@ async function main() {
             unilateral: true,
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'glutes' },
-                    { muscle: 'hamstrings' },
+                    { muscle: 'quadriceps' },
                 ],
             },
         },
@@ -30,7 +29,6 @@ async function main() {
             equipment: 'machine',
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'glutes' },
                     { muscle: 'quadriceps' },
                     { muscle: 'calfs' },
@@ -42,7 +40,6 @@ async function main() {
             equipment: 'machine',
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'quadriceps' },
                 ],
             },
@@ -52,7 +49,6 @@ async function main() {
             equipment: 'machine',
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'hamstrings' },
                 ],
             },
@@ -62,7 +58,7 @@ async function main() {
             equipment: 'barbell',
             targets: {
                 create: [
-                    { muscle: 'legs' },
+                    { muscle: 'quadriceps' },
                     { muscle: 'glutes' },
                     { muscle: 'hamstrings' },
                 ],
@@ -73,7 +69,6 @@ async function main() {
             equipment: 'barbell',
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'glutes' },
                     { muscle: 'hamstrings' },
                 ],

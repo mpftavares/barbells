@@ -25,7 +25,6 @@ export async function createExercise(request: FastifyRequest, reply: FastifyRepl
                         'chest',
                         'glutes',
                         'hamstrings',
-                        'legs',
                         'quadriceps',
                         'shoulders',
                         'triceps',

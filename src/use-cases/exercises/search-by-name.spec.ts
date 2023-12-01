@@ -1,14 +1,14 @@
 import { InMemoryExercisesRepository } from '@/repositories/in-memory/in-memory-exercises-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { SearchExerciseByNamesUseCase } from './search-by-name'
+import { SearchExerciseByNameUseCase } from './search-by-name'
 
 let exercisesRepository: InMemoryExercisesRepository
-let sut: SearchExerciseByNamesUseCase
+let sut: SearchExerciseByNameUseCase
 
 describe('Search Exercises Use Case', () => {
     beforeEach(async () => {
         exercisesRepository = new InMemoryExercisesRepository()
-        sut = new SearchExerciseByNamesUseCase(exercisesRepository)
+        sut = new SearchExerciseByNameUseCase(exercisesRepository)
     })
 
     it('should be able to search exercises by name', async () => {
@@ -19,7 +19,6 @@ describe('Search Exercises Use Case', () => {
             userId: 'user-01',
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'glutes' },
                     { muscle: 'hamstrings' },
                 ],
@@ -33,7 +32,6 @@ describe('Search Exercises Use Case', () => {
             userId: 'user-01',
             targets: {
                 create: [
-                    { muscle: 'legs' },
                     { muscle: 'glutes' },
                     { muscle: 'hamstrings' },
                 ],

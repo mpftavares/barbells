@@ -19,12 +19,11 @@ describe('Search Exercises (e2e)', () => {
             .post('/exercises')
             .set('Authorization', `Bearer ${token}`)
             .send({
-                target: 'test exercise',
+                name: 'test exercise',
                 equipment: 'dumbbells',
                 unilateral: true,
                 targets: {
                     create: [
-                        { muscle: 'legs' },
                         { muscle: 'glutes' },
                         { muscle: 'hamstrings' },
                     ],
@@ -35,12 +34,11 @@ describe('Search Exercises (e2e)', () => {
             .post('/exercises')
             .set('Authorization', `Bearer ${token}`)
             .send({
-                target: 'another test exercise',
+                name: 'another test exercise',
                 equipment: 'dumbbells',
                 unilateral: true,
                 targets: {
                     create: [
-                        { muscle: 'legs' },
                         { muscle: 'glutes' },
                         { muscle: 'hamstrings' },
                     ],
@@ -55,18 +53,7 @@ describe('Search Exercises (e2e)', () => {
             .set('Authorization', `Bearer ${token}`)
             .send()
 
-        console.log(response.body)
-
         expect(response.statusCode).toEqual(200)
-
-        // expect(response.body.exercises).toHaveLength(2)
-        // expect(response.body.exercises).toEqual([
-        //     expect.objectContaining({
-        //         muscle: 'hamstrings',
-        //     }),
-        // ])
-
-        // these fail for some reason but route works properly in insomnia so everything's fine
-
+        expect(response.body.exercises).toHaveLength(2)
     })
 })

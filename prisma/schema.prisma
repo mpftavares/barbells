@@ -61,7 +61,6 @@ enum Muscle {
   chest
   glutes
   hamstrings
-  legs
   quadriceps
   shoulders
   triceps
