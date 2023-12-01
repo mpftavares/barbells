@@ -45,8 +45,5 @@ describe('Create exercise (e2e)', () => {
 
     expect(targets.length).toEqual(2)
 
-
   })
-
-
 })

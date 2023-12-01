@@ -91,7 +91,8 @@ model Template {
 
   userId String?  @map("user_id")
   user   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Schema Schema[]
+  
+  schemas Schema[]
 
   @@map("templates")
 }
@@ -120,7 +121,7 @@ model Workout {
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  Set Set[]
+  sets Set[]
 
   @@map("workouts")
 }

@@ -15,7 +15,14 @@ describe('Create Workout Use Case', () => {
     const { workout } = await sut.execute({
       name: 'test workout',
       timestamp: undefined,
-      userId: 'user-01'
+      userId: 'user-01',
+      sets: {
+        create: [
+          { exerciseId: 'exercise-01', reps: 12 },
+          { exerciseId: 'exercise-01', reps: 10 },
+          { exerciseId: 'exercise-01', reps: 8 },
+        ],
+      },
     })
 
     expect(workout.timestamp).toEqual(expect.any(Date))
@@ -25,7 +32,14 @@ describe('Create Workout Use Case', () => {
     const { workout } = await sut.execute({
       name: 'test workout',
       timestamp: new Date().toISOString(),
-      userId: 'user-01'
+      userId: 'user-01',
+      sets: {
+        create: [
+          { exerciseId: 'exercise-01', reps: 12 },
+          { exerciseId: 'exercise-01', reps: 10 },
+          { exerciseId: 'exercise-01', reps: 8 }
+        ],
+      },
     })
 
     expect(workout.timestamp).toEqual(expect.any(Date))
