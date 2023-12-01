@@ -4,9 +4,9 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 
 export async function deleteWorkoutHistory(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const deleteAllUserWorkoutsHistoryUseCase = makeDeleteUserWorkoutsHistoryUseCase();
+        const deleteUserWorkoutsHistoryUseCase = makeDeleteUserWorkoutsHistoryUseCase();
 
-        const isDeleted = await deleteAllUserWorkoutsHistoryUseCase.execute({
+        const isDeleted = await deleteUserWorkoutsHistoryUseCase.execute({
             userId: request.user.sub,
         });
 

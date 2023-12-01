@@ -1,10 +1,10 @@
 import { PrismaExercisesRepository } from '@/repositories/prisma/prisma-exercises-repository'
-import { SearchExercisesUseCase } from '@/use-cases/exercises/search'
+import { SearchExerciseByNamesUseCase } from '@/use-cases/exercises/search-by-name'
 
 
 export function makeSearchExerciseUseCase() {
     const exercisesRepository = new PrismaExercisesRepository()
-    const searchExerciseUseCase = new SearchExercisesUseCase(exercisesRepository)
+    const SearchExerciseByNameUseCase = new SearchExerciseByNamesUseCase(exercisesRepository)
 
-    return searchExerciseUseCase
+    return SearchExerciseByNameUseCase
 }

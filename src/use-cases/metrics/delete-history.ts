@@ -1,11 +1,11 @@
 import { MetricsRepository } from '@/repositories/metrics-repository';
 import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
-interface DeleteAllUserMetricsHistoryUseCaseRequest {
+interface DeleteMetricsHistoryUseCaseRequest {
   userId: string;
 }
 
-interface DeleteAllUserMetricsHistoryUseCaseResponse {
+interface DeleteMetricsHistoryUseCaseResponse {
   success: boolean;
 }
 
@@ -14,7 +14,7 @@ export class DeleteUserMetricsHistoryUseCase {
 
   async execute({
     userId,
-  }: DeleteAllUserMetricsHistoryUseCaseRequest): Promise<DeleteAllUserMetricsHistoryUseCaseResponse> {
+  }: DeleteMetricsHistoryUseCaseRequest): Promise<DeleteMetricsHistoryUseCaseResponse> {
     const userMetrics = await this.metricsRepository.findByUserId(userId);
 
     if (userMetrics.length === 0) {

@@ -1,11 +1,11 @@
 import { WorkoutsRepository } from '@/repositories/workouts-repository';
 import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
-interface DeleteAllUserWorkoutsHistoryUseCaseRequest {
+interface DeleteUserWorkoutsHistoryUseCaseRequest {
   userId: string;
 }
 
-interface DeleteAllUserWorkoutsHistoryUseCaseResponse {
+interface DeleteUserWorkoutsHistoryUseCaseResponse {
   success: boolean;
 }
 
@@ -14,7 +14,7 @@ export class DeleteUserWorkoutsHistoryUseCase {
 
   async execute({
     userId,
-  }: DeleteAllUserWorkoutsHistoryUseCaseRequest): Promise<DeleteAllUserWorkoutsHistoryUseCaseResponse> {
+  }: DeleteUserWorkoutsHistoryUseCaseRequest): Promise<DeleteUserWorkoutsHistoryUseCaseResponse> {
     const userWorkouts = await this.workoutsRepository.findByUserId(userId);
 
     if (userWorkouts.length === 0) {

@@ -4,9 +4,9 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 
 export async function deleteMetricHistory(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const deleteAllUserMetricsHistoryUseCase = makeDeleteUserMetricsHistoryUseCase();
+        const deleteMetricsHistoryUseCase = makeDeleteUserMetricsHistoryUseCase();
 
-        const isDeleted = await deleteAllUserMetricsHistoryUseCase.execute({
+        const isDeleted = await deleteMetricsHistoryUseCase.execute({
             userId: request.user.sub,
         });
 

@@ -1,20 +1,20 @@
 import { ExercisesRepository } from '@/repositories/exercises-repository'
 import { Exercise } from '@prisma/client'
 
-interface SearchExercisesUseCaseRequest {
+interface SearchExerciseByNamesUseCaseRequest {
   query: string
 }
 
-interface SearchExercisesUseCaseResponse {
+interface SearchExerciseByNamesUseCaseResponse {
   exercises: Exercise[]
 }
 
-export class SearchExercisesUseCase {
+export class SearchExerciseByNamesUseCase {
   constructor(private exercisesRepository: ExercisesRepository) { }
 
   async execute({
     query,
-  }: SearchExercisesUseCaseRequest): Promise<SearchExercisesUseCaseResponse> {
+  }: SearchExerciseByNamesUseCaseRequest): Promise<SearchExerciseByNamesUseCaseResponse> {
     const exercises = await this.exercisesRepository.searchByName(query)
 
     return {
