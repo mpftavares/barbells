@@ -4,7 +4,7 @@ import { SearchExerciseByNamesUseCase } from '@/use-cases/exercises/search-by-na
 
 export function makeSearchExerciseUseCase() {
     const exercisesRepository = new PrismaExercisesRepository()
-    const SearchExerciseByNameUseCase = new SearchExerciseByNamesUseCase(exercisesRepository)
+    const searchExerciseByNameUseCase = new SearchExerciseByNamesUseCase(exercisesRepository)
 
-    return SearchExerciseByNameUseCase
+    return searchExerciseByNameUseCase
 }

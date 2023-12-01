@@ -1,5 +1,5 @@
 
-import { makeSearchExerciseUseCase } from '@/use-cases/factories/exercises/make-search-exercise-use-case'
+import { makeSearchExerciseUseCase } from '@/use-cases/factories/exercises/make-search-exercises-by-name-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 

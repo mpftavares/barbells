@@ -1,4 +1,4 @@
-import { makeSearchUserWorkoutDateUseCase } from '@/use-cases/factories/workouts/make-user-workouts-by-date'
+import { makeSearchUserWorkoutDateUseCase } from '@/use-cases/factories/workouts/make-search-user-workouts-by-date-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function searchByDate(request: FastifyRequest<{ Params: { startDate: Date, endDate: Date } }>, reply: FastifyReply) {
