@@ -3,7 +3,7 @@ import { CreateSchemaUseCase } from "../../schemas/create"
 
 export function makeCreateSchemaUseCase() {
     const schemasRepository = new PrismaSchemasRepository()
-    const makeCreateSchemasUseCase = new CreateSchemaUseCase(schemasRepository)
+    const makeCreateSchemaUseCase = new CreateSchemaUseCase(schemasRepository)
 
-    return makeCreateSchemasUseCase
+    return makeCreateSchemaUseCase
 }

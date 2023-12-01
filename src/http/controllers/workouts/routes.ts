@@ -1,7 +1,7 @@
 import { verifyJwt } from "@/http/middlewares/verify-jwt";
 import { FastifyInstance } from "fastify";
 import { createWorkout } from "./create";
-import { searchByDate } from "./search-by-date.spec";
+import { searchByDate } from "./search-by-date";
 import { deleteWorkout } from "./delete";
 import { deleteWorkoutHistory } from "./delete-history";
 import { workoutHistory } from "./history";

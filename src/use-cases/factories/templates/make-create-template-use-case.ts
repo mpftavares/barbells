@@ -3,7 +3,7 @@ import { CreateTemplateUseCase } from "../../templates/create"
 
 export function makeCreateTemplateUseCase() {
     const templatesRepository = new PrismaTemplatesRepository()
-    const makeCreateTemplatesUseCase = new CreateTemplateUseCase(templatesRepository)
+    const makeCreateTemplateUseCase = new CreateTemplateUseCase(templatesRepository)
 
-    return makeCreateTemplatesUseCase
+    return makeCreateTemplateUseCase
 }

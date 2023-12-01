@@ -3,7 +3,7 @@ import { CreateWorkoutUseCase } from "../../workouts/create"
 
 export function makeCreateWorkoutUseCase() {
     const workoutsRepository = new PrismaWorkoutsRepository()
-    const makeCreateWorkoutsUseCase = new CreateWorkoutUseCase(workoutsRepository)
+    const makeCreateWorkoutUseCase = new CreateWorkoutUseCase(workoutsRepository)
 
-    return makeCreateWorkoutsUseCase
+    return makeCreateWorkoutUseCase
 }

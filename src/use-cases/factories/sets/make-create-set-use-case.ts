@@ -3,7 +3,7 @@ import { CreateSetUseCase } from "../../sets/create"
 
 export function makeCreateSetUseCase() {
     const setsRepository = new PrismaSetsRepository()
-    const makeCreateSetsUseCase = new CreateSetUseCase(setsRepository)
+    const makeCreateSetUseCase = new CreateSetUseCase(setsRepository)
 
-    return makeCreateSetsUseCase
+    return makeCreateSetUseCase
 }
