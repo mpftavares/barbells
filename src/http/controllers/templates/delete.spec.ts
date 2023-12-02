@@ -1,6 +1,7 @@
 import { app } from "@/app";
 import { prisma } from "@/lib/prisma";
 import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-user";
+import { createExercise } from "@/utils/test/create-exercise";
 import { createTemplate } from "@/utils/test/create-template";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -20,7 +21,9 @@ describe('Delete Template Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow()
 
-        const template = await createTemplate(user)
+        const exercise = await createExercise(user)
+
+        const template = await createTemplate(user, exercise)
 
         const deleteTemplateResponse = await request(app.server)
             .delete(`/templates/${template.id}`)

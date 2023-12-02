@@ -3,7 +3,6 @@ import { prisma } from '@/lib/prisma'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
 import { createExercise } from '@/utils/test/create-exercise'
 import { createTemplate } from '@/utils/test/create-template'
-import { createWorkout } from '@/utils/test/create-workout'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
@@ -24,7 +23,7 @@ describe('Create schema (e2e)', () => {
 
     const exercise = await createExercise(user)
 
-    const template = await createTemplate(user)
+    const template = await createTemplate(user, exercise)
 
     const response = await request(app.server)
       .post('/schemas')

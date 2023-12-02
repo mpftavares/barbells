@@ -4,6 +4,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { prisma } from "@/lib/prisma";
 import { createTemplate } from "@/utils/test/create-template";
+import { createExercise } from "@/utils/test/create-exercise";
 
 describe('Update Template Use Case (e2e)', () => {
     beforeAll(async () => {
@@ -20,9 +21,9 @@ describe('Update Template Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow();
 
-        const template = await createTemplate(user)
+        const exercise = await createExercise(user);
 
-        const newTimestamp = new Date('2023-07-15T08:30:00Z');
+        const template = await createTemplate(user, exercise)
 
         const updateTemplateResponse = await request(app.server)
             .put(`/templates/${template.id}`)
@@ -40,6 +41,6 @@ describe('Update Template Use Case (e2e)', () => {
             },
         });
 
-        expect(updatedTemplate.name).toBe('prettier template name');
+        expect(updatedTemplate.name).toBe('prettier template name')
     });
 })

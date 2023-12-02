@@ -24,7 +24,7 @@ describe('Update Schema Use Case (e2e)', () => {
 
         const exercise = await createExercise(user)
 
-        const template = await createTemplate(user)
+        const template = await createTemplate(user, exercise)
 
         const schema = await createSchema(template, exercise)
 
