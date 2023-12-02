@@ -4,6 +4,14 @@ import { Template } from "@prisma/client"
 interface CreateTemplateUseCaseRequest {
     userId: string
     name: string
+    schemas: {
+        create: {
+            exerciseId: string
+            number: number
+            sets: number
+            reps: string
+        }[];
+    }
 }
 
 interface CreateTemplateUseCaseResponse {
@@ -16,12 +24,14 @@ export class CreateTemplateUseCase {
 
     async execute({
         userId,
-        name
+        name,
+        schemas
     }: CreateTemplateUseCaseRequest): Promise<CreateTemplateUseCaseResponse> {
 
         const template = await this.templatesRepository.create({
             userId,
             name,
+            schemas
         })
 
         if (!template) {

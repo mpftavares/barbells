@@ -6,15 +6,26 @@ export async function createTemplate(request: FastifyRequest, reply: FastifyRepl
 
     const createTemplateParamsSchema = z.object({
         name: z.string(),
+        schemas: z.object({
+            create: z.array(
+                z.object({
+                    exerciseId: z.string(),
+                    number: z.number(),
+                    sets: z.number(),
+                    reps: z.string()
+                })
+            )
+        })
     })
 
-    const { name } = createTemplateParamsSchema.parse(request.body)
+    const { name, schemas } = createTemplateParamsSchema.parse(request.body)
 
     const createTemplateUseCase = makeCreateTemplateUseCase()
 
     await createTemplateUseCase.execute({
         name,
-        userId: request.user.sub
+        userId: request.user.sub,
+        schemas
     })
     return reply.status(201).send();
 
