@@ -1,4 +1,5 @@
 import { SchemasRepository } from "@/repositories/schemas-repository";
+import { FailedToDeleteResourceError } from "../errors/failed-to-delete-resource.error";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteSchemaUseCaseRequest {
@@ -25,7 +26,7 @@ export class DeleteSchemaUseCase {
         const isSchemaDeleted = await this.schemasRepository.delete(schemaId);
 
         if (!isSchemaDeleted) {
-            throw new Error('Failed to delete schema 🤦');
+            throw new FailedToDeleteResourceError()
         }
 
         return {

@@ -1,4 +1,5 @@
 import { MetricsRepository } from '@/repositories/metrics-repository';
+import { FailedToDeleteResourceError } from '../errors/failed-to-delete-resource.error';
 import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
 interface DeleteMetricsHistoryUseCaseRequest {
@@ -26,7 +27,7 @@ export class DeleteUserMetricsHistoryUseCase {
     const areMetricsDeleted = await this.metricsRepository.deleteAll(metricIds);
 
     if (!areMetricsDeleted) {
-      throw new Error('Failed to delete user metrics metrics 🙊');
+      throw new FailedToDeleteResourceError()
     }
 
     return {

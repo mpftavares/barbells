@@ -1,4 +1,5 @@
 import { ExercisesRepository } from "@/repositories/exercises-repository";
+import { FailedToDeleteResourceError } from "../errors/failed-to-delete-resource.error";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteExerciseUseCaseRequest {
@@ -25,7 +26,7 @@ export class DeleteExerciseUseCase {
         const isExerciseDeleted = await this.exercisesRepository.delete(exerciseId);
 
         if (!isExerciseDeleted) {
-            throw new Error('Failed to delete exercise 🤦');
+            throw new FailedToDeleteResourceError()
         }
 
         return {

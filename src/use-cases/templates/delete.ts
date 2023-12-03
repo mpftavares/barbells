@@ -1,4 +1,5 @@
 import { TemplatesRepository } from "@/repositories/templates-repository";
+import { FailedToDeleteResourceError } from "../errors/failed-to-delete-resource.error";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteTemplateUseCaseRequest {
@@ -25,7 +26,7 @@ export class DeleteTemplateUseCase {
         const isTemplateDeleted = await this.templatesRepository.delete(templateId);
 
         if (!isTemplateDeleted) {
-            throw new Error('Failed to delete template 🤦');
+            throw new FailedToDeleteResourceError()
         }
 
         return {

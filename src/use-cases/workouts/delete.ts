@@ -1,4 +1,5 @@
 import { WorkoutsRepository } from "@/repositories/workouts-repository";
+import { FailedToDeleteResourceError } from "../errors/failed-to-delete-resource.error";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteWorkoutUseCaseRequest {
@@ -25,7 +26,7 @@ export class DeleteWorkoutUseCase {
         const isWorkoutDeleted = await this.workoutsRepository.delete(workoutId);
 
         if (!isWorkoutDeleted) {
-            throw new Error('Failed to delete workout 🤦');
+            throw new FailedToDeleteResourceError()
         }
 
         return {

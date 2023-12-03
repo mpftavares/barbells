@@ -1,4 +1,5 @@
 import { SetsRepository } from "@/repositories/sets-repository";
+import { FailedToDeleteResourceError } from "../errors/failed-to-delete-resource.error";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteSetUseCaseRequest {
@@ -25,7 +26,7 @@ export class DeleteSetUseCase {
         const isSetDeleted = await this.setsRepository.delete(setId);
 
         if (!isSetDeleted) {
-            throw new Error('Failed to delete set 🤦');
+            throw new FailedToDeleteResourceError()
         }
 
         return {

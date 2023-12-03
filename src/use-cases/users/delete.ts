@@ -1,4 +1,5 @@
 import { UsersRepository } from "../../repositories/users-repository";
+import { FailedToDeleteResourceError } from "../errors/failed-to-delete-resource.error";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface DeleteUserProfileUseCaseRequest {
@@ -25,7 +26,7 @@ export class DeleteUserProfileUseCase {
         const isUserDeleted = await this.usersRepository.delete(userId);
 
         if (!isUserDeleted) {
-            throw new Error('Failed to delete user 🤦');
+            throw new FailedToDeleteResourceError()
         }
 
         return {
