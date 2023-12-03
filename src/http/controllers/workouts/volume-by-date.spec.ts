@@ -5,7 +5,7 @@ import { createExercise } from '@/utils/test/create-exercise'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-describe('Search User Workouts By Date (e2e)', () => {
+describe('Get Volume By Date Range (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })
@@ -14,7 +14,7 @@ describe('Search User Workouts By Date (e2e)', () => {
         await app.close()
     })
 
-    it('should be able to search user workouts by date range', async () => {
+    it('should be able to get workout volume by date range', async () => {
         const { token } = await createAndAuthenticateUser(app)
 
         const user = await prisma.user.findFirstOrThrow()
@@ -68,18 +68,20 @@ describe('Search User Workouts By Date (e2e)', () => {
 
         const from = '2023-11-20'
         const to = '2023-11-21'
+        const muscle = 'glutes'
 
         const response = await request(app.server)
-            .get(`/workouts/search-by-date`)
+            .get(`/workouts/search-by-date/volume`)
             .query({
                 from,
                 to,
+                muscle
             })
             .set('Authorization', `Bearer ${token}`)
             .send()
 
         expect(response.statusCode).toEqual(200)
-        expect(response.body.workouts).toHaveLength(2)
+        expect(response.body.volume).toBe(1200)  // 2 * 3 * 10 * 10 * 2 giving utils data
     })
 
 
