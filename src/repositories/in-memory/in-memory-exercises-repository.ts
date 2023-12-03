@@ -1,4 +1,4 @@
-import { Prisma, Exercise, Muscle } from '@prisma/client'
+import { Prisma, Exercise, Muscle, Equipment } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
 import { ExercisesRepository } from '../exercises-repository'
 
@@ -75,5 +75,20 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
     this.items[index] = updatedExercise;
 
     return updatedExercise;
+  }
+
+  async doesExerciseAlreadyExist(name: string, equipment: Equipment, unilateral?: boolean) {
+
+    const normalizedUnilateral = unilateral !== undefined ? unilateral : false;
+
+    const exercise = this.items.find(exercise => {
+      return exercise.name === name && exercise.equipment === equipment && exercise.unilateral === normalizedUnilateral;
+    });
+
+    if (exercise) {
+      return true;
+    }
+
+    return false;
   }
 }

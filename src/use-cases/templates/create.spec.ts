@@ -1,6 +1,7 @@
 import { InMemoryTemplatesRepository } from '@/repositories/in-memory/in-memory-templates-repository'
 import { randomUUID } from 'crypto'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { ResourceAlreadyExistsError } from '../errors/item-already-exists-error'
 import { CreateTemplateUseCase } from './create'
 
 let templatesRepository: InMemoryTemplatesRepository
@@ -27,5 +28,36 @@ describe('Create Template Use Case', () => {
 
     expect(template.id).toEqual(expect.any(String))
   })
+
+  it('should not be able to create a template with the same name', async () => {
+
+    await sut.execute({
+      name: 'test template',
+      userId: randomUUID(),
+      schemas: {
+        create: [
+          { exerciseId: 'exercise-01', number: 1, sets: 3, reps: '8-12' },
+          { exerciseId: 'exercise-02', number: 2, sets: 3, reps: '8-12' },
+          { exerciseId: 'exercise-03', number: 3, sets: 3, reps: '8-12' }
+        ]
+      }
+    })
+
+    await expect(() =>
+      sut.execute({
+        name: 'test template',
+        userId: randomUUID(),
+        schemas: {
+          create: [
+            { exerciseId: 'exercise-01', number: 1, sets: 3, reps: '8-12' },
+            { exerciseId: 'exercise-02', number: 2, sets: 3, reps: '8-12' },
+            { exerciseId: 'exercise-03', number: 3, sets: 3, reps: '8-12' }
+          ]
+        }
+      }),
+    ).rejects.toBeInstanceOf(ResourceAlreadyExistsError)
+
+  })
+
 
 })

@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Muscle, Prisma } from "@prisma/client";
+import { Equipment, Muscle, Prisma } from "@prisma/client";
 import { ExercisesRepository } from "../exercises-repository";
 
 export class PrismaExercisesRepository implements ExercisesRepository {
@@ -105,5 +105,22 @@ export class PrismaExercisesRepository implements ExercisesRepository {
     })
 
     return exercise;
+  }
+
+  async doesExerciseAlreadyExist(name: string, equipment: Equipment, unilateral?: boolean) {
+
+    const exercise = await prisma.exercise.findFirst({
+      where: {
+        name,
+        equipment,
+        unilateral: unilateral || false
+      }
+    });
+
+    if (exercise) {
+      return true;
+    }
+
+    return false;
   }
 }

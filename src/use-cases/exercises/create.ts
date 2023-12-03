@@ -1,5 +1,6 @@
 import { ExercisesRepository } from "@/repositories/exercises-repository"
 import { Equipment, Exercise, Muscle } from "@prisma/client"
+import { ResourceAlreadyExistsError } from "../errors/item-already-exists-error"
 
 interface CreateExerciseUseCaseRequest {
     name: string
@@ -29,6 +30,13 @@ export class CreateExerciseUseCase {
         userId,
         targets
     }: CreateExerciseUseCaseRequest): Promise<CreateExerciseUseCaseResponse> {
+
+        const exerciseAlreadyExists = await this.exercisesRepository.doesExerciseAlreadyExist(name, equipment, unilateral)
+
+        if (exerciseAlreadyExists) {
+            throw new ResourceAlreadyExistsError()
+        }
+
         const exercise = await this.exercisesRepository.create({
             name,
             equipment,

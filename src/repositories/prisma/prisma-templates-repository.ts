@@ -14,14 +14,6 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
         return template
     }
 
-    async create(data: Prisma.TemplateUncheckedCreateInput) {
-        const template = await prisma.template.create({
-            data,
-        })
-
-        return template
-    }
-
     async findByUserId(userId: string) {
         const templates = await prisma.template.findMany({
             where: {
@@ -30,6 +22,14 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
         })
 
         return templates
+    }
+
+    async create(data: Prisma.TemplateUncheckedCreateInput) {
+        const template = await prisma.template.create({
+            data,
+        })
+
+        return template
     }
 
     async delete(id: string) {
@@ -57,5 +57,20 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
         })
 
         return template;
+    }
+
+    async doesTemplateAlreadyExist(name: string) {
+
+        const template = await prisma.template.findFirst({
+            where: {
+                name
+            }
+        })
+
+        if (template) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -6,5 +6,6 @@ export interface TemplatesRepository {
     create(data: Prisma.TemplateUncheckedCreateInput): Promise<Template>
     delete(id: string): Promise<boolean>
     update(id: string, data: Prisma.TemplateUncheckedUpdateInput): Promise<Template | null>
+    doesTemplateAlreadyExist(name: string): Promise<boolean>
 
 }

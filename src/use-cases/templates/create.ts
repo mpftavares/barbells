@@ -1,5 +1,6 @@
 import { TemplatesRepository } from "@/repositories/templates-repository"
 import { Template } from "@prisma/client"
+import { ResourceAlreadyExistsError } from "../errors/item-already-exists-error"
 
 interface CreateTemplateUseCaseRequest {
     userId: string
@@ -27,6 +28,12 @@ export class CreateTemplateUseCase {
         name,
         schemas
     }: CreateTemplateUseCaseRequest): Promise<CreateTemplateUseCaseResponse> {
+
+        const templateAlreadyExists = await this.templatesRepository.doesTemplateAlreadyExist(name)
+
+        if (templateAlreadyExists) {
+            throw new ResourceAlreadyExistsError()
+        }
 
         const template = await this.templatesRepository.create({
             userId,

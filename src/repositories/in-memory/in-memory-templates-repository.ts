@@ -62,4 +62,17 @@ export class InMemoryTemplatesRepository implements TemplatesRepository {
 
     return updatedTemplate;
   }
+
+  async doesTemplateAlreadyExist(name: string) {
+
+    const template = this.items.find(template => {
+      return template.name === name
+    });
+
+    if (template) {
+      return true;
+    }
+
+    return false;
+  }
 }
