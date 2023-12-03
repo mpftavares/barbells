@@ -37,7 +37,25 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
       },
     })
 
-    return workout
+    return workout;
+
+  }
+
+  async getWorkoutSets(id: string) {
+    const workout = await prisma.workout.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        sets: true,
+      },
+    })
+
+    if (workout) {
+      return workout.sets
+    }
+
+    return []
   }
 
   async findByDateRange(userId: string, startDate: string, endDate: string) {

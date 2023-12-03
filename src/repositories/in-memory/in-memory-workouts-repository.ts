@@ -38,6 +38,10 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
     });
   }
 
+  async getWorkoutSets(id: string) {
+    return [] // no nested workout sets in in-memory db
+  }
+
   async create(data: Prisma.WorkoutUncheckedCreateInput) {
     const workout = {
       id: randomUUID(),

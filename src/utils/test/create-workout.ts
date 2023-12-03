@@ -9,9 +9,9 @@ export async function createWorkout(user: User, exercise: Exercise) {
       userId: user.id,
       sets: {
         create: [
-          { exerciseId: exercise.id, reps: 12 },
-          { exerciseId: exercise.id, reps: 10 },
-          { exerciseId: exercise.id, reps: 8 },
+          { exerciseId: exercise.id, reps: 10, weight: 10 },
+          { exerciseId: exercise.id, reps: 10, weight: 10 },
+          { exerciseId: exercise.id, reps: 10, weight: 10 },
         ]
       }
     },

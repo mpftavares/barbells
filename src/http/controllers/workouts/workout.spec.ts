@@ -15,7 +15,7 @@ describe('Get Workout (e2e)', () => {
     await app.close()
   })
 
-  it('should be able to get workout by id', async () => {
+  it('should be able to get workout and its volume by id', async () => {
 
     const { token } = await createAndAuthenticateUser(app)
 
@@ -36,5 +36,8 @@ describe('Get Workout (e2e)', () => {
         name: 'test workout',
       }),
     )
+    expect(response.body.volume).toBeTypeOf("number")
+    expect(response.body.volume).toBeDefined()
+    expect(response.body.volume).toBe(600) // 3 * 10 * 10 * 2 giving utils data
   })
 })
