@@ -68,12 +68,14 @@ describe('Search User Workouts By Date (e2e)', () => {
 
         const from = '2023-11-20'
         const to = '2023-11-21'
+        const muscle = 'glutes'
 
         const response = await request(app.server)
             .get(`/workouts/search-by-date`)
             .query({
                 from,
-                to
+                to,
+                muscle
             })
             .set('Authorization', `Bearer ${token}`)
             .send()
@@ -82,4 +84,6 @@ describe('Search User Workouts By Date (e2e)', () => {
         expect(response.body.workouts).toHaveLength(2)
         expect(response.body.volume).toBe(1200)  // 2 * 3 * 10 * 10 * 2 giving utils data
     })
+
+
 })

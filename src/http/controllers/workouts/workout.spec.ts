@@ -25,9 +25,14 @@ describe('Get Workout (e2e)', () => {
 
     const workout = await createWorkout(user, exercise)
 
+    const muscle = 'glutes'
+
     const response = await request(app.server)
       .get(`/workouts/${workout.id}`)
       .set('Authorization', `Bearer ${token}`)
+      .query({
+        muscle
+      })
       .send()
 
     expect(response.statusCode).toEqual(200)

@@ -5,6 +5,7 @@ import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface GetWorkoutUseCaseRequest {
     workoutId: string
+    muscle?: string
 }
 
 interface GetWorkoutUseCaseResponse {
@@ -17,7 +18,8 @@ export class GetWorkoutUseCase {
     constructor(private workoutsRepository: WorkoutsRepository) { }
 
     async execute({
-        workoutId
+        workoutId,
+        muscle,
     }: GetWorkoutUseCaseRequest): Promise<GetWorkoutUseCaseResponse> {
 
         const workout = await this.workoutsRepository.findById(workoutId);
@@ -28,7 +30,7 @@ export class GetWorkoutUseCase {
 
         const sets = await this.workoutsRepository.getWorkoutSets(workoutId);
 
-        const volume = await calculateWorkoutVolume(sets)
+        const volume = await calculateWorkoutVolume(sets, muscle)
 
         return {
             workout, volume

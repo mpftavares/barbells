@@ -6,6 +6,7 @@ interface SearchWorkoutsByDateUseCaseRequest {
     userId: string
     startDate: string
     endDate: string
+    muscle?: string
 }
 
 interface SearchWorkoutsByDateUseCaseResponse {
@@ -19,7 +20,8 @@ export class SearchWorkoutsByDateUseCase {
     async execute({
         userId,
         startDate,
-        endDate
+        endDate,
+        muscle
     }: SearchWorkoutsByDateUseCaseRequest): Promise<SearchWorkoutsByDateUseCaseResponse> {
         const workouts = await this.workoutsRepository.findByDateRange(
             userId,
@@ -33,11 +35,11 @@ export class SearchWorkoutsByDateUseCase {
         for (const workout of workouts) {
             const sets = await this.workoutsRepository.getWorkoutSets(workout.id);
 
-            const workoutVolume = await calculateWorkoutVolume(sets)
+            const workoutVolume = await calculateWorkoutVolume(sets, muscle)
 
             volume += workoutVolume
         }
-  
+
         return {
             workouts, volume
         }
