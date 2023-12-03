@@ -5,6 +5,12 @@ import { ExercisesRepository } from '../exercises-repository'
 export class InMemoryExercisesRepository implements ExercisesRepository {
   public items: Exercise[] = []
 
+  async getAll(userId: string) {
+    return this.items.filter((exercise) => {
+      return exercise.userId === userId || exercise.userId === null;
+    });
+  }
+
   async findById(id: string) {
     const exercise = this.items.find((item) => item.id === id)
 

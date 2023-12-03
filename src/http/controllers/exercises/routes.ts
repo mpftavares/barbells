@@ -6,12 +6,14 @@ import { updateExercise } from "./update";
 import { getExercise } from "./exercise";
 import { searchExercisesByName } from "./search-by-name";
 import { searchExercisesByTarget } from "./search-by-target";
+import { getAllExercises } from "./all-exercises";
 
 export async function exercisesRoutes(app: FastifyInstance) {
     app.addHook('onRequest', verifyJwt)
 
     app.post('/exercises', createExercise)
     app.get('/exercises/:exerciseId', getExercise)
+    app.get('/exercises/all', getAllExercises)
     app.get('/exercises/search-by-name', searchExercisesByName)
     app.get('/exercises/search-by-target', searchExercisesByTarget)
     app.delete('/exercises/:exerciseId', deleteExercise)

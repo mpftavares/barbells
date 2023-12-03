@@ -4,6 +4,26 @@ import { ExercisesRepository } from "../exercises-repository";
 
 export class PrismaExercisesRepository implements ExercisesRepository {
 
+  async getAll(userId: string) {
+    const exercises = await prisma.exercise.findMany({
+      where: {
+        OR: [
+          {
+            userId
+          },
+          {
+            userId: null,
+          },
+        ],
+      },
+      include: {
+        targets: true,
+      },
+    })
+
+    return exercises
+  }
+
   async findById(id: string) {
     const exercise = await prisma.exercise.findUnique({
       where: {
