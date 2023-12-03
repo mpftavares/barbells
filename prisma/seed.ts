@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 async function main() {
     const defaultExercises = [
         {
+            id: "1",
             name: 'squat',
             equipment: 'barbell',
             targets: {
@@ -14,6 +15,7 @@ async function main() {
             },
         },
         {
+            id: "2",
             name: 'bulgarian split squat',
             equipment: 'dumbbells',
             unilateral: true,
@@ -25,6 +27,7 @@ async function main() {
             },
         },
         {
+            id: "3",
             name: 'leg press',
             equipment: 'machine',
             targets: {
@@ -36,6 +39,7 @@ async function main() {
             },
         },
         {
+            id: "4",
             name: 'leg extension',
             equipment: 'machine',
             targets: {
@@ -45,6 +49,7 @@ async function main() {
             },
         },
         {
+            id: "5",
             name: 'leg curl',
             equipment: 'machine',
             targets: {
@@ -54,6 +59,7 @@ async function main() {
             },
         },
         {
+            id: "6",
             name: 'deadlift',
             equipment: 'barbell',
             targets: {
@@ -65,6 +71,7 @@ async function main() {
             },
         },
         {
+            id: "7",
             name: 'romanian deadlift',
             equipment: 'barbell',
             targets: {
@@ -75,6 +82,7 @@ async function main() {
             },
         },
         {
+            id: "8",
             name: 'bench press',
             equipment: 'barbell',
             targets: {
@@ -86,6 +94,7 @@ async function main() {
             },
         },
         {
+            id: "9",
             name: 'incline bench press',
             equipment: 'dumbbells',
             targets: {
@@ -97,6 +106,7 @@ async function main() {
             },
         },
         {
+            id: "10",
             name: 'overhead press',
             equipment: 'barbell',
             targets: {
@@ -106,6 +116,7 @@ async function main() {
             },
         },
         {
+            id: "11",
             name: 'shoulder press',
             equipment: 'dumbbells',
             targets: {
@@ -115,6 +126,7 @@ async function main() {
             },
         },
         {
+            id: "12",
             name: 'lateral raise',
             equipment: 'dumbbells',
             targets: {
@@ -124,6 +136,7 @@ async function main() {
             },
         },
         {
+            id: "13",
             name: 'barbell row',
             equipment: 'barbell',
             targets: {
@@ -133,6 +146,7 @@ async function main() {
             },
         },
         {
+            id: "14",
             name: 'lat pulldown',
             equipment: 'cable',
             targets: {
@@ -142,6 +156,7 @@ async function main() {
             },
         },
         {
+            id: "15",
             name: 'pull-up',
             equipment: 'bodyweight',
             targets: {
@@ -151,6 +166,7 @@ async function main() {
             },
         },
         {
+            id: "16",
             name: 'chin-up',
             equipment: 'bodyweight',
             targets: {
@@ -161,14 +177,47 @@ async function main() {
             },
         },
         {
+            id: "17",
             name: 'bicep curl',
             equipment: 'dumbbells',
+            unilateral: true,
             targets: {
                 create: [
                     { muscle: 'biceps' },
                 ],
             },
-        }
+        },
+        {
+            id: "18",
+            name: 'abductor',
+            equipment: 'machine',
+            targets: {
+                create: [
+                    { muscle: 'glutes' },
+                ],
+            },
+        },
+        {
+            id: "19",
+            name: 'unilateral dumbbell row',
+            equipment: 'dumbbells',
+            unilateral: true,
+            targets: {
+                create: [
+                    { muscle: 'back' },
+                ],
+            },
+        },
+        {
+            id: "20",
+            name: 'bicep curl',
+            equipment: 'barbell',
+            targets: {
+                create: [
+                    { muscle: 'biceps' },
+                ],
+            },
+        },
     ];
 
     for (const exercise of defaultExercises) {
@@ -178,6 +227,53 @@ async function main() {
     }
 
     console.log('Default exercises seeded successfully 💪');
+
+    const defaultTemplates = [
+        {
+            name: 'lower body',
+            schemas: {
+                create: [
+                    { exerciseId: "1", number: 1, sets: 3, reps: '8-12' },
+                    { exerciseId: "4", number: 2, sets: 3, reps: '8-12' },
+                    { exerciseId: "5", number: 3, sets: 3, reps: '8-12' },
+                    { exerciseId: "2", number: 4, sets: 3, reps: '8-12' },
+                    { exerciseId: "18", number: 5, sets: 3, reps: '8-12' },
+                ]
+            }
+        },
+        {
+            name: 'back and biceps',
+            schemas: {
+                create: [
+                    { exerciseId: "14", number: 1, sets: 3, reps: '8-12' },
+                    { exerciseId: "13", number: 2, sets: 3, reps: '8-12' },
+                    { exerciseId: "19", number: 3, sets: 3, reps: '8-12' },
+                    { exerciseId: "20", number: 4, sets: 3, reps: '8-12' },
+                    { exerciseId: "17", number: 5, sets: 3, reps: '8-12' },
+                ]
+            }
+        },
+        {
+            name: 'chest and shoulders',
+            schemas: {
+                create: [
+                    { exerciseId: "8", number: 1, sets: 3, reps: '8-12' },
+                    { exerciseId: "9", number: 2, sets: 3, reps: '8-12' },
+                    { exerciseId: "10", number: 3, sets: 3, reps: '8-12' },
+                    { exerciseId: "11", number: 4, sets: 3, reps: '8-12' },
+                    { exerciseId: "12", number: 5, sets: 3, reps: '8-12' },
+                ]
+            }
+        }
+    ]
+
+    for (const template of defaultTemplates) {
+        await prisma.template.create({
+            data: template,
+        });
+    }
+
+    console.log('Default templates seeded successfully 💪');
 }
 
 main()

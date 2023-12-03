@@ -4,6 +4,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { prisma } from "@/lib/prisma";
 import { createWorkout } from "@/utils/test/create-workout";
+import { createExercise } from "@/utils/test/create-exercise";
 
 describe('Update Workout (e2e)', () => {
     beforeAll(async () => {
@@ -20,7 +21,9 @@ describe('Update Workout (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow();
 
-        const workout = await createWorkout(user)
+        const exercise = await createExercise(user)
+
+        const workout = await createWorkout(user, exercise)
 
         const newTimestamp = new Date('2023-07-15T08:30:00Z');
 

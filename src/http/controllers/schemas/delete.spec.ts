@@ -22,9 +22,9 @@ describe('Delete Schema Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow()
 
-        const template = await createTemplate(user)
-
         const exercise = await createExercise(user)
+
+        const template = await createTemplate(user, exercise)
 
         const schema = await createSchema(template, exercise)
 

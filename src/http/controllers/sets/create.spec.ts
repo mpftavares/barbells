@@ -21,9 +21,9 @@ describe('Create set (e2e)', () => {
 
     const user = await prisma.user.findFirstOrThrow();
 
-    const workout = await createWorkout(user)
-
     const exercise = await createExercise(user)
+
+    const workout = await createWorkout(user, exercise)
 
     const response = await request(app.server)
       .post('/sets')

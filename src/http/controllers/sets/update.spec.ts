@@ -22,9 +22,9 @@ describe('Update Set Use Case (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow()
 
-        const workout = await createWorkout(user)
-
         const exercise = await createExercise(user)
+
+        const workout = await createWorkout(user, exercise)
 
         const set = await createSet(workout, exercise)
 
