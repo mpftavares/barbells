@@ -1,5 +1,6 @@
 import { SchemasRepository } from '@/repositories/schemas-repository'
 import { Equipment, Schema } from '@prisma/client'
+import { FailedToUpdateResourceError } from '../errors/failed-to-update-resource.error'
 import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateSchemaUseCaseRequest {
@@ -39,7 +40,7 @@ export class UpdateSchemaUseCase {
     )
 
     if (!updatedSchema) {
-      throw new Error('Failed to update update schema 🤦');
+      throw new FailedToUpdateResourceError()
     }
 
     return { updatedSchema };

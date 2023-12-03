@@ -1,5 +1,6 @@
 import { TemplatesRepository } from '@/repositories/templates-repository'
 import { Template } from '@prisma/client'
+import { FailedToUpdateResourceError } from '../errors/failed-to-update-resource.error'
 import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateTemplateUseCaseRequest {
@@ -33,7 +34,7 @@ export class UpdateTemplateUseCase {
     )
 
     if (!updatedTemplate) {
-      throw new Error('Failed to update template 🤦');
+      throw new FailedToUpdateResourceError()
     }
 
     return { updatedTemplate };

@@ -1,5 +1,6 @@
 import { MetricsRepository } from '@/repositories/metrics-repository'
 import { Metric } from '@prisma/client'
+import { FailedToUpdateResourceError } from '../errors/failed-to-update-resource.error'
 import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateMetricUseCaseRequest {
@@ -41,7 +42,7 @@ export class UpdateMetricUseCase {
     )
 
     if (!updatedMetric) {
-      throw new Error('Failed to update metric 🤦');
+      throw new FailedToUpdateResourceError()
     }
 
     return { updatedMetric };

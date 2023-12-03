@@ -1,5 +1,6 @@
 import { WorkoutsRepository } from '@/repositories/workouts-repository'
 import { Workout } from '@prisma/client'
+import { FailedToUpdateResourceError } from '../errors/failed-to-update-resource.error'
 import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateWorkoutUseCaseRequest {
@@ -35,7 +36,7 @@ export class UpdateWorkoutUseCase {
     )
 
     if (!updatedWorkout) {
-      throw new Error('Failed to update workout 🤦');
+      throw new FailedToUpdateResourceError()
     }
 
     return { updatedWorkout };

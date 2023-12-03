@@ -1,5 +1,6 @@
 import { SetsRepository } from '@/repositories/sets-repository'
 import { Set } from '@prisma/client'
+import { FailedToUpdateResourceError } from '../errors/failed-to-update-resource.error'
 import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateSetUseCaseRequest {
@@ -35,7 +36,7 @@ export class UpdateSetUseCase {
     )
 
     if (!updatedSet) {
-      throw new Error('Failed to update set 🤦');
+      throw new FailedToUpdateResourceError()
     }
 
     return { updatedSet };
