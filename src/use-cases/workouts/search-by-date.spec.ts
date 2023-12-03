@@ -34,8 +34,8 @@ describe('User Workout History Use Case', () => {
 
         const { workouts } = await sut.execute({
             userId: 'user-01',
-            startDate: new Date('2023-11-20'),
-            endDate: new Date('2023-11-21'),
+            startDate: '2023-11-20',
+            endDate: '2023-11-21',
         })
 
         expect(workouts).toHaveLength(2)
