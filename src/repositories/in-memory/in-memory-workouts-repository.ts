@@ -24,15 +24,17 @@ export class InMemoryWorkoutsRepository implements WorkoutsRepository {
     return workout
   }
 
-  async findByDateRange(userId: string, startDate: Date, endDate: Date) {
+  async findByDateRange(userId: string, startDate: string, endDate: string) {
 
-    const endOfEndDate = new Date(endDate)
-    endOfEndDate.setDate(endDate.getDate() + 1)
+    const starts = new Date(startDate)
+    const ends = new Date(endDate)
+
+    ends.setDate(ends.getDate() + 1)
 
     return this.items.filter((workout) => {
       return workout.userId === userId &&
-        workout.timestamp >= startDate &&
-        workout.timestamp < endOfEndDate;
+        workout.timestamp >= starts &&
+        workout.timestamp < ends;
     });
   }
 
