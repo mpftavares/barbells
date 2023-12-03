@@ -46,7 +46,7 @@ describe('Search Exercises Use Case', () => {
         expect(exercises).toHaveLength(2)
     })
 
-    it('shouldnt be able to search other users exercises by name', async () => {
+    it('should not be able to search other users exercises by name', async () => {
         await exercisesRepository.create({
             name: 'test exercise',
             equipment: 'dumbbells',
