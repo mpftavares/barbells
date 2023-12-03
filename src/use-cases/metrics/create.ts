@@ -1,5 +1,6 @@
 import { MetricsRepository } from "@/repositories/metrics-repository"
 import { Metric } from "@prisma/client"
+import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 
 interface CreateMetricUseCaseRequest {
     userId: string
@@ -31,7 +32,7 @@ export class CreateMetricUseCase {
         })
 
         if (!metric) {
-            throw new Error('Failed to create metric 🤦');
+            throw new FailedToCreateResourceError();
         }
 
         return { metric }

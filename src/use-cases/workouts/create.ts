@@ -1,5 +1,6 @@
 import { WorkoutsRepository } from "@/repositories/workouts-repository"
 import { Workout } from "@prisma/client"
+import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 
 interface CreateWorkoutUseCaseRequest {
     name?: string | null
@@ -37,7 +38,7 @@ export class CreateWorkoutUseCase {
         })
 
         if (!workout) {
-            throw new Error('Failed to create workout 🤦');
+            throw new FailedToCreateResourceError();
         }
 
         return { workout }

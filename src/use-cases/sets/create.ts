@@ -1,5 +1,6 @@
 import { SetsRepository } from "@/repositories/sets-repository"
 import { Set } from "@prisma/client"
+import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 
 interface CreateSetUseCaseRequest {
     workoutId: string
@@ -31,7 +32,7 @@ export class CreateSetUseCase {
         })
 
         if (!set) {
-            throw new Error('Failed to create set 🤦');
+            throw new FailedToCreateResourceError();
         }
 
         return { set }

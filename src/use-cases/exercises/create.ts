@@ -1,5 +1,6 @@
 import { ExercisesRepository } from "@/repositories/exercises-repository"
 import { Equipment, Exercise, Muscle } from "@prisma/client"
+import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 import { ResourceAlreadyExistsError } from "../errors/item-already-exists-error"
 
 interface CreateExerciseUseCaseRequest {
@@ -46,7 +47,7 @@ export class CreateExerciseUseCase {
         });
 
         if (!exercise) {
-            throw new Error('Failed to create exercise 🤦');
+            throw new FailedToCreateResourceError();
         }
 
         return { exercise };

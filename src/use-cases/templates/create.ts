@@ -1,5 +1,6 @@
 import { TemplatesRepository } from "@/repositories/templates-repository"
 import { Template } from "@prisma/client"
+import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 import { ResourceAlreadyExistsError } from "../errors/item-already-exists-error"
 
 interface CreateTemplateUseCaseRequest {
@@ -42,7 +43,7 @@ export class CreateTemplateUseCase {
         })
 
         if (!template) {
-            throw new Error('Failed to create template 🤦');
+            throw new FailedToCreateResourceError();
         }
 
         return { template }

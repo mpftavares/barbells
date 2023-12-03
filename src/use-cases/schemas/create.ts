@@ -1,5 +1,6 @@
 import { SchemasRepository } from "@/repositories/schemas-repository"
 import { Equipment, Schema } from "@prisma/client"
+import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 
 interface CreateSchemaUseCaseRequest {
     templateId: string
@@ -34,7 +35,7 @@ export class CreateSchemaUseCase {
         })
 
         if (!schema) {
-            throw new Error('Failed to create schema 🤦');
+            throw new FailedToCreateResourceError();
         }
 
         return { schema }
