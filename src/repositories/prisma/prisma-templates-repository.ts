@@ -14,14 +14,24 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
         return template
     }
 
-    async findByUserId(userId: string) {
-        const templates = await prisma.template.findMany({
+    async getAll(userId: string) {
+        const exercises = await prisma.template.findMany({
             where: {
-                userId,
-            }
+                OR: [
+                    {
+                        userId
+                    },
+                    {
+                        userId: null,
+                    },
+                ],
+            },
+            include: {
+                schemas: true,
+            },
         })
 
-        return templates
+        return exercises
     }
 
     async create(data: Prisma.TemplateUncheckedCreateInput) {

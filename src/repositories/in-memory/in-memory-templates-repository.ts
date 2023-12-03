@@ -15,9 +15,10 @@ export class InMemoryTemplatesRepository implements TemplatesRepository {
     return template
   }
 
-  async findByUserId(userId: string) {
-    return this.items
-      .filter((template) => template.userId === userId)
+  async getAll(userId: string) {
+    return this.items.filter((exercise) => {
+      return exercise.userId === userId || exercise.userId === null;
+    });
   }
 
   async create(data: Prisma.TemplateUncheckedCreateInput) {
