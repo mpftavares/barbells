@@ -40,7 +40,7 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     return workout
   }
 
-  async findByDateRange(userId: string, startDate: Date, endDate: Date) {
+  async findByDateRange(userId: string, startDate: string, endDate: string) {
 
     const workouts = await prisma.workout.findMany({
       where: {

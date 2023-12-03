@@ -17,7 +17,7 @@ export async function workoutsRoutes(app: FastifyInstance) {
     app.get('/workouts/:workoutId', getWorkout)
     app.get('/workouts/history', workoutHistory)
     app.get('/workouts/total', workoutTotal)
-    app.get('/workouts/:startDate/:endDate', searchByDate)
+    app.get('/workouts/search-by-date', searchByDate)
 
     app.delete('/workouts/:workoutId', deleteWorkout)
     app.delete('/workouts/history', deleteWorkoutHistory)

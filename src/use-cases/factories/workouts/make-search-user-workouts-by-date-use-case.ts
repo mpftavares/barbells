@@ -1,9 +1,9 @@
 import { PrismaWorkoutsRepository } from "@/repositories/prisma/prisma-workouts-repository"
-import { SearchUserWorkoutDateUseCase } from "@/use-cases/workouts/date-search"
+import { SearchWorkoutsByDateUseCase } from "@/use-cases/workouts/search-by-date"
 
-export function makeSearchUserWorkoutDateUseCase() {
+export function makeSearchWorkoutsByDateUseCase() {
     const workoutsRepository = new PrismaWorkoutsRepository()
-    const searchUserWorkoutDateUseCase = new SearchUserWorkoutDateUseCase(workoutsRepository)
+    const searchWorkoutsByDateUseCase = new SearchWorkoutsByDateUseCase(workoutsRepository)
 
-    return searchUserWorkoutDateUseCase
+    return searchWorkoutsByDateUseCase
 }

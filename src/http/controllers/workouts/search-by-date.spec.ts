@@ -38,16 +38,19 @@ describe('Search User Workouts By Date (e2e)', () => {
             ],
         })
 
-        const startDate = new Date('2023-11-20')
-        const endDate = new Date('2023-11-21')
+        const from = '2023-11-20'
+        const to = '2023-11-21'
 
         const response = await request(app.server)
-            .get(`/workouts/${startDate}/${endDate}`)
+            .get(`/workouts/search-by-date`)
+            .query({
+                from,
+                to
+            })
             .set('Authorization', `Bearer ${token}`)
             .send()
 
-        expect(response.status).toBe(200)
-        expect(response.body).toHaveProperty('workouts')
+        expect(response.statusCode).toEqual(200)
         expect(response.body.workouts).toHaveLength(2)
     })
 })

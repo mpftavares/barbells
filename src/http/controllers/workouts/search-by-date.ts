@@ -1,14 +1,22 @@
-import { makeSearchUserWorkoutDateUseCase } from '@/use-cases/factories/workouts/make-search-user-workouts-by-date-use-case'
+import { makeSearchWorkoutsByDateUseCase } from '@/use-cases/factories/workouts/make-search-user-workouts-by-date-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
+import { z } from 'zod'
 
-export async function searchByDate(request: FastifyRequest<{ Params: { startDate: Date, endDate: Date } }>, reply: FastifyReply) {
+export async function searchByDate(request: FastifyRequest, reply: FastifyReply) {
 
-    const searchUserWorkoutDateUseCase = makeSearchUserWorkoutDateUseCase()
+    const searchWorkoutsByDateQuerySchema = z.object({
+        from: z.string(),
+        to: z.string()
+    })
 
-    const { workouts } = await searchUserWorkoutDateUseCase.execute({
+    const { from, to } = searchWorkoutsByDateQuerySchema.parse(request.query)
+
+    const searchUserWorkoutsByDateUseCase = makeSearchWorkoutsByDateUseCase()
+
+    const { workouts } = await searchUserWorkoutsByDateUseCase.execute({
         userId: request.user.sub,
-        startDate: request.params.startDate,
-        endDate: request.params.endDate
+        startDate: from,
+        endDate: to
     })
 
     return reply.status(200).send({
