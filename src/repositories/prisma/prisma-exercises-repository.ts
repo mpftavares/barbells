@@ -58,6 +58,9 @@ export class PrismaExercisesRepository implements ExercisesRepository {
           },
         ],
       },
+      include: {
+        targets: true,
+      },
     });
 
     return exercises;
@@ -85,6 +88,9 @@ export class PrismaExercisesRepository implements ExercisesRepository {
             },
           },
         ],
+      },
+      include: {
+        targets: true,
       },
 
     });

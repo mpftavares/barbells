@@ -9,6 +9,9 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
             where: {
                 id,
             },
+            include: {
+                schemas: true,
+            },
         })
 
         return template
@@ -25,9 +28,6 @@ export class PrismaTemplatesRepository implements TemplatesRepository {
                         userId: null,
                     },
                 ],
-            },
-            include: {
-                schemas: true,
             },
         })
 

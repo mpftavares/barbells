@@ -8,7 +8,7 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
     const workouts = await prisma.workout.findMany({
       where: {
         userId,
-      }
+      },
     })
 
     return workouts
@@ -29,6 +29,9 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
       where: {
         id,
       },
+      include: {
+        sets: true,
+      },
     })
 
     return workout
@@ -43,7 +46,7 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
           gte: new Date(startDate),
           lte: new Date(endDate),
         }
-      }
+      },
     })
 
     return workouts
