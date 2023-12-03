@@ -1,4 +1,5 @@
 import { WorkoutsRepository } from '@/repositories/workouts-repository'
+import { calculateWorkoutVolume } from '@/utils/test/calculate-workout-volume.ts'
 import { Workout } from '@prisma/client'
 
 interface SearchWorkoutsByDateUseCaseRequest {
@@ -9,6 +10,7 @@ interface SearchWorkoutsByDateUseCaseRequest {
 
 interface SearchWorkoutsByDateUseCaseResponse {
     workouts: Workout[]
+    volume: number
 }
 
 export class SearchWorkoutsByDateUseCase {
@@ -25,8 +27,19 @@ export class SearchWorkoutsByDateUseCase {
             endDate
         )
 
+        let volume = 0
+
+
+        for (const workout of workouts) {
+            const sets = await this.workoutsRepository.getWorkoutSets(workout.id);
+
+            const workoutVolume = await calculateWorkoutVolume(sets)
+
+            volume += workoutVolume
+        }
+  
         return {
-            workouts,
+            workouts, volume
         }
     }
 }

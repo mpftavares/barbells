@@ -1,6 +1,7 @@
 import { app } from '@/app'
 import { prisma } from '@/lib/prisma'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
+import { createExercise } from '@/utils/test/create-exercise'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
@@ -18,24 +19,51 @@ describe('Search User Workouts By Date (e2e)', () => {
 
         const user = await prisma.user.findFirstOrThrow()
 
-        await prisma.workout.createMany({
-            data: [
-                {
-                    name: 'test workout',
-                    timestamp: new Date('2023-11-20'),
-                    userId: user.id
+        const exercise = await createExercise(user)
+
+        await prisma.workout.create({
+            data: {
+                name: 'test workout',
+                timestamp: new Date('2023-11-20'),
+                userId: user.id,
+                sets: {
+                    create: [
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                    ]
                 },
-                {
-                    name: 'another test workout',
-                    timestamp: new Date('2023-11-28'),
-                    userId: user.id
+            }
+        })
+
+        await prisma.workout.create({
+            data: {
+                name: 'test workout',
+                timestamp: new Date('2023-11-21'),
+                userId: user.id,
+                sets: {
+                    create: [
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                    ]
                 },
-                {
-                    name: 'one more test workout',
-                    timestamp: new Date('2023-11-21'),
-                    userId: user.id
-                }
-            ],
+            }
+        })
+
+        await prisma.workout.create({
+            data: {
+                name: 'test workout',
+                timestamp: new Date('2023-11-23'),
+                userId: user.id,
+                sets: {
+                    create: [
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                        { exerciseId: exercise.id, reps: 10, weight: 10 },
+                    ]
+                },
+            }
         })
 
         const from = '2023-11-20'
@@ -52,5 +80,6 @@ describe('Search User Workouts By Date (e2e)', () => {
 
         expect(response.statusCode).toEqual(200)
         expect(response.body.workouts).toHaveLength(2)
+        expect(response.body.volume).toBe(1200)  // 2 * 3 * 10 * 10 * 2 giving utils data
     })
 })

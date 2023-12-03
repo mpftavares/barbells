@@ -13,13 +13,13 @@ export async function searchByDate(request: FastifyRequest, reply: FastifyReply)
 
     const searchUserWorkoutsByDateUseCase = makeSearchWorkoutsByDateUseCase()
 
-    const { workouts } = await searchUserWorkoutsByDateUseCase.execute({
+    const { workouts, volume } = await searchUserWorkoutsByDateUseCase.execute({
         userId: request.user.sub,
         startDate: from,
         endDate: to
     })
 
     return reply.status(200).send({
-        workouts,
+        workouts, volume
     })
 }
