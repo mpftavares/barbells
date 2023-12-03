@@ -9,6 +9,9 @@ export class PrismaWorkoutsRepository implements WorkoutsRepository {
       where: {
         userId,
       },
+      orderBy: {
+        timestamp: 'desc',
+      },
     })
 
     return workouts

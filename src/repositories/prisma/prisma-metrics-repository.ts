@@ -8,7 +8,10 @@ export class PrismaMetricsRepository implements MetricsRepository {
     const metrics = await prisma.metric.findMany({
       where: {
         userId,
-      }
+      },
+      orderBy: {
+        timestamp: 'desc',
+      },
     })
 
     return metrics
