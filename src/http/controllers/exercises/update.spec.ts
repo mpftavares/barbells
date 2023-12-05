@@ -26,7 +26,6 @@ describe('Update Exercise Use Case (e2e)', () => {
             .put(`/exercises/${exercise.id}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
-                id: exercise.id,
                 name: 'prettier exercise name',
                 equipment: 'barbell',
                 unilateral: false,

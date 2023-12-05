@@ -31,7 +31,6 @@ describe('Update Workout (e2e)', () => {
             .put(`/workouts/${workout.id}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
-                id: workout.id,
                 name: 'prettier workout name',
                 timestamp: newTimestamp
             });

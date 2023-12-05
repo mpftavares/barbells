@@ -28,7 +28,6 @@ describe('Update Metric Use Case (e2e)', () => {
             .put(`/metrics/${metric.id}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
-                id: metric.id,
                 timestamp: newTimestamp,
                 weight: 70,
             });

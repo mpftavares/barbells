@@ -4,15 +4,16 @@ import { makeUpdateMetricUseCase } from "@/use-cases/factories/metrics/make-upda
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function updateMetric(request: FastifyRequest, reply: FastifyReply) {
+export async function updateMetric(request: FastifyRequest<{ Params: { metricId: string } }>, reply: FastifyReply) {
     const updateMetricParamsSchema = z.object({
-        id: z.string(),
         timestamp: z.optional(z.string().datetime()),
         weight: z.optional(z.number()),
         bodyFat: z.optional(z.number()),
     })
 
-    const { id, timestamp, weight, bodyFat } = updateMetricParamsSchema.parse(request.body)
+    const { timestamp, weight, bodyFat } = updateMetricParamsSchema.parse(request.body)
+
+    const id = request.params.metricId
 
     const getMetric = makeGetMetricUseCase()
 

@@ -16,7 +16,7 @@ export async function searchExercisesByTarget(request: FastifyRequest, reply: Fa
       'quadriceps',
       'shoulders',
       'triceps',
-  ]),
+    ]),
   })
 
   const { query } = searchExercisesByTargetQuerySchema.parse(request.query)

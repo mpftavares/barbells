@@ -2,15 +2,16 @@ import { makeUpdateSetUseCase } from "@/use-cases/factories/sets/make-update-set
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function updateSet(request: FastifyRequest, reply: FastifyReply) {
+export async function updateSet(request: FastifyRequest<{ Params: { setId: string } }>, reply: FastifyReply) {
 
     const updateSetParamsSchema = z.object({
-        id: z.string(),
         weight: z.optional(z.number()),
         reps: z.number()
     })
 
-    const { id, weight, reps } = updateSetParamsSchema.parse(request.body)
+    const { weight, reps } = updateSetParamsSchema.parse(request.body)
+    
+    const id = request.params.setId
 
     const updateSetUseCase = makeUpdateSetUseCase()
 

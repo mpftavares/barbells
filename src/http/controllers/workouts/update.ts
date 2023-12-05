@@ -4,15 +4,16 @@ import { makeUpdateWorkoutUseCase } from "@/use-cases/factories/workouts/make-up
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function updateWorkout(request: FastifyRequest, reply: FastifyReply) {
+export async function updateWorkout(request: FastifyRequest<{ Params: { workoutId: string } }>, reply: FastifyReply) {
 
     const updateWorkoutParamsSchema = z.object({
-        id: z.string(),
         name: z.optional(z.string().nullable()),
         timestamp: z.optional(z.string().datetime())
     })
 
-    const { id, name, timestamp } = updateWorkoutParamsSchema.parse(request.body)
+    const { name, timestamp } = updateWorkoutParamsSchema.parse(request.body)
+
+    const id = request.params.workoutId    
 
     const getWorkout = makeGetWorkoutUseCase()
 

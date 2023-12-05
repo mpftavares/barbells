@@ -29,7 +29,6 @@ describe('Update Template Use Case (e2e)', () => {
             .put(`/templates/${template.id}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
-                id: template.id,
                 name: 'prettier template name',
             });
 

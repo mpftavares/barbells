@@ -2,17 +2,18 @@ import { makeUpdateSchemaUseCase } from "@/use-cases/factories/schemas/make-upda
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function updateSchema(request: FastifyRequest, reply: FastifyReply) {
+export async function updateSchema(request: FastifyRequest<{ Params: { schemaId: string } }>, reply: FastifyReply) {
 
     const updateSchemaParamsSchema = z.object({
-        id: z.string(),
         exerciseId: z.string(),
         number: z.number(),
         sets: z.number(),
         reps: z.string()
     })
 
-    const { id, exerciseId, number, sets, reps } = updateSchemaParamsSchema.parse(request.body)
+    const { exerciseId, number, sets, reps } = updateSchemaParamsSchema.parse(request.body)
+
+    const id = request.params.schemaId
 
     const updateSchemaUseCase = makeUpdateSchemaUseCase()
 

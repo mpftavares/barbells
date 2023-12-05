@@ -4,14 +4,15 @@ import { makeUpdateTemplateUseCase } from "@/use-cases/factories/templates/make-
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function updateTemplate(request: FastifyRequest, reply: FastifyReply) {
+export async function updateTemplate(request: FastifyRequest<{ Params: { templateId: string } }>, reply: FastifyReply) {
 
     const updateTemplateParamsSchema = z.object({
-        id: z.string(),
         name: z.string(),
     })
 
-    const { id, name } = updateTemplateParamsSchema.parse(request.body)
+    const { name } = updateTemplateParamsSchema.parse(request.body)
+
+    const id = request.params.templateId
 
     const getTemplate = makeGetTemplateUseCase()
 

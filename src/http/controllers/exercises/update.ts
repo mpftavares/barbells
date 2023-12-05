@@ -4,10 +4,9 @@ import { makeUpdateExerciseUseCase } from "@/use-cases/factories/exercises/make-
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function updateExercise(request: FastifyRequest, reply: FastifyReply) {
+export async function updateExercise(request: FastifyRequest<{ Params: { exerciseId: string } }>, reply: FastifyReply) {
 
     const updateExerciseParamsSchema = z.object({
-        id: z.string(),
         name: z.string(),
         equipment: z.enum([
             "assisted",
@@ -20,7 +19,9 @@ export async function updateExercise(request: FastifyRequest, reply: FastifyRepl
         unilateral: z.optional(z.boolean()),
     })
 
-    const { id, name, equipment, unilateral } = updateExerciseParamsSchema.parse(request.body)
+    const { name, equipment, unilateral } = updateExerciseParamsSchema.parse(request.body)
+
+    const id = request.params.exerciseId
 
     const getExercise = makeGetExerciseUseCase()
 
