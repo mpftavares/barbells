@@ -14,13 +14,16 @@ export async function calculateWorkoutVolume(sets: Array<Set>, muscle?: string) 
                 include: { targets: true },
             });
 
-            const { targets } = exercise;
+            const { targets, equipment } = exercise;
 
-            if (!muscle || targets.some(target => muscle.includes(target.muscle))) {
-                if (exercise.unilateral) {
-                    volume += (set.reps * set.weight) * 2;
-                } else {
-                    volume += set.reps * set.weight;
+
+            if (equipment !== 'assisted') {
+                if (!muscle || targets.some(target => muscle.includes(target.muscle))) {
+                    if (exercise.unilateral) {
+                        volume += (set.reps * set.weight) * 2;
+                    } else {
+                        volume += set.reps * set.weight;
+                    }
                 }
             }
         }
