@@ -49,7 +49,7 @@ model Exercise {
   sets    Set[]
   schemas Schema[]
 
-  @@unique([name, equipment, unilateral])
+  @@unique([userId, name, equipment, unilateral])
   @@map("exercises")
 }
 
