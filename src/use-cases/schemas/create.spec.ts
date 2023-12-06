@@ -15,7 +15,6 @@ describe('Create Schema Use Case', () => {
     const { schema } = await sut.execute({
       templateId: "template-01",
       exerciseId: "exercise-01",
-      number: 1,
       sets: 3,
       reps: '8-12'
     })

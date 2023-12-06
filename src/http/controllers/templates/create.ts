@@ -16,10 +16,6 @@ export async function createTemplate(request: FastifyRequest, reply: FastifyRepl
                         required_error: "exerciseId is required",
                         invalid_type_error: "exerciseId must be a uuid",
                       }),
-                    number: z.number({
-                        required_error: "Exercise number is required",
-                        invalid_type_error: "Exercise number must be a number",
-                      }).positive(),
                     sets: z.number({
                         required_error: "Number of sets is required",
                         invalid_type_error: "Number of sets must be a number",

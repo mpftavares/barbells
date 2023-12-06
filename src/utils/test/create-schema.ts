@@ -6,7 +6,6 @@ export async function createSchema(template: Template, exercise: Exercise) {
         data: {
             templateId: template.id,
             exerciseId: exercise.id,
-            number: 1,
             sets: 3,
             reps: '8-12'
         },

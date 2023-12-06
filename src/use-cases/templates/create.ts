@@ -9,7 +9,6 @@ interface CreateTemplateUseCaseRequest {
     schemas: {
         create: {
             exerciseId: string
-            number: number
             sets: number
             reps: string
         }[];

@@ -13,10 +13,6 @@ export async function createSchema(request: FastifyRequest, reply: FastifyReply)
             required_error: "exerciseId is required",
             invalid_type_error: "exerciseId must be a uuid",
           }).uuid(),
-        number: z.number({
-            required_error: "Exercise number is required",
-            invalid_type_error: "Exercise number must be a number",
-          }).positive(),
         sets: z.number({
             required_error: "Sets is required",
             invalid_type_error: "Sets must be a number",
@@ -27,14 +23,13 @@ export async function createSchema(request: FastifyRequest, reply: FastifyReply)
           })
     })
 
-    const { templateId, exerciseId, number, sets, reps } = createSchemaParamsSchema.parse(request.body)
+    const { templateId, exerciseId, sets, reps } = createSchemaParamsSchema.parse(request.body)
 
     const createSchemaUseCase = makeCreateSchemaUseCase()
 
     await createSchemaUseCase.execute({
         templateId,
         exerciseId,
-        number,
         sets,
         reps,
     })

@@ -31,7 +31,6 @@ describe('Create schema (e2e)', () => {
       .send({
         templateId: template.id,
         exerciseId: exercise.id,
-        number: 1,
         sets: 3,
         reps: '8-12'
       })

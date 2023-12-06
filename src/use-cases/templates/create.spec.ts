@@ -19,9 +19,9 @@ describe('Create Template Use Case', () => {
       userId: randomUUID(),
       schemas: {
         create: [
-          { exerciseId: 'exercise-01', number: 1, sets: 3, reps: '8-12' },
-          { exerciseId: 'exercise-02', number: 2, sets: 3, reps: '8-12' },
-          { exerciseId: 'exercise-03', number: 3, sets: 3, reps: '8-12' }
+          { exerciseId: 'exercise-01', sets: 3, reps: '8-12' },
+          { exerciseId: 'exercise-02', sets: 3, reps: '8-12' },
+          { exerciseId: 'exercise-03', sets: 3, reps: '8-12' }
         ]
       }
     })
@@ -36,9 +36,9 @@ describe('Create Template Use Case', () => {
       userId: randomUUID(),
       schemas: {
         create: [
-          { exerciseId: 'exercise-01', number: 1, sets: 3, reps: '8-12' },
-          { exerciseId: 'exercise-02', number: 2, sets: 3, reps: '8-12' },
-          { exerciseId: 'exercise-03', number: 3, sets: 3, reps: '8-12' }
+          { exerciseId: 'exercise-01', sets: 3, reps: '8-12' },
+          { exerciseId: 'exercise-02', sets: 3, reps: '8-12' },
+          { exerciseId: 'exercise-03', sets: 3, reps: '8-12' }
         ]
       }
     })
@@ -49,9 +49,9 @@ describe('Create Template Use Case', () => {
         userId: randomUUID(),
         schemas: {
           create: [
-            { exerciseId: 'exercise-01', number: 1, sets: 3, reps: '8-12' },
-            { exerciseId: 'exercise-02', number: 2, sets: 3, reps: '8-12' },
-            { exerciseId: 'exercise-03', number: 3, sets: 3, reps: '8-12' }
+            { exerciseId: 'exercise-01', sets: 3, reps: '8-12' },
+            { exerciseId: 'exercise-02', sets: 3, reps: '8-12' },
+            { exerciseId: 'exercise-03', sets: 3, reps: '8-12' }
           ]
         }
       }),

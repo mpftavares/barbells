@@ -29,8 +29,8 @@ describe('Create template (e2e)', () => {
         name: 'test template',
         schemas: {
           create: [
-            { exerciseId: exercise.id, number: 1, sets: 3, reps: '8-12' },
-            { exerciseId: exercise.id, number: 2, sets: 3, reps: '12-15' }
+            { exerciseId: exercise.id, sets: 3, reps: '8-12' },
+            { exerciseId: exercise.id, sets: 3, reps: '12-15' }
           ],
         },
       })

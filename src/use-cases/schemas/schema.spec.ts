@@ -16,7 +16,6 @@ describe('Get Schema Profile Use Case', () => {
         const createdSchema = await schemasRepository.create({
             templateId: "template-01",
             exerciseId: "exercise-01",
-            number: 1,
             sets: 3,
             reps: '8-12'
         })

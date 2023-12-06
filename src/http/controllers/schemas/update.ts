@@ -9,10 +9,6 @@ export async function updateSchema(request: FastifyRequest<{ Params: { schemaId:
             required_error: "exerciseId is required",
             invalid_type_error: "exerciseId must be an uuid",
           }),
-        number: z.number({
-            required_error: "Exercise number is required",
-            invalid_type_error: "Exercise number must be a number",
-          }),
         sets: z.number({
             required_error: "Sets is required",
             invalid_type_error: "Sets must be a number",
@@ -23,7 +19,7 @@ export async function updateSchema(request: FastifyRequest<{ Params: { schemaId:
           })
     })
 
-    const { exerciseId, number, sets, reps } = updateSchemaParamsSchema.parse(request.body)
+    const { exerciseId, sets, reps } = updateSchemaParamsSchema.parse(request.body)
 
     const id = request.params.schemaId
 
@@ -32,7 +28,6 @@ export async function updateSchema(request: FastifyRequest<{ Params: { schemaId:
     await updateSchemaUseCase.execute({
         id,
         exerciseId,
-        number,
         sets,
         reps,
     })

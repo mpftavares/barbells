@@ -5,7 +5,6 @@ import { FailedToCreateResourceError } from "../errors/failed-to-create-resource
 interface CreateSchemaUseCaseRequest {
     templateId: string
     exerciseId: string
-    number: number
     sets: number
     reps: string
 }
@@ -21,7 +20,6 @@ export class CreateSchemaUseCase {
     async execute({
         templateId,
         exerciseId,
-        number,
         sets,
         reps
     }: CreateSchemaUseCaseRequest): Promise<CreateSchemaUseCaseResponse> {
@@ -29,7 +27,6 @@ export class CreateSchemaUseCase {
         const schema = await this.schemasRepository.create({
             templateId,
             exerciseId,
-            number,
             sets,
             reps
         })

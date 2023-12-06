@@ -34,7 +34,6 @@ describe('Update Schema Use Case (e2e)', () => {
             .send({
                 templateId: template.id,
                 exerciseId: exercise.id,
-                number: 1,
                 sets: 5,
                 reps: '5',
             });
