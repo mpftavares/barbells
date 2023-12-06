@@ -4,7 +4,10 @@ import { z } from 'zod';
 
 export async function createExercise(request: FastifyRequest, reply: FastifyReply) {
     const createExerciseParamsSchema = z.object({
-        name: z.string(),
+        name: z.string({
+            required_error: "Name is required",
+            invalid_type_error: "Name must be a string",
+        }),
         equipment: z.enum([
             'assisted',
             'barbell',
@@ -12,9 +15,11 @@ export async function createExercise(request: FastifyRequest, reply: FastifyRepl
             'cable',
             'dumbbells',
             'machine',
-        ]),
+        ], {
+            required_error: "Equipment is required",
+        }),
         unilateral: z.optional(z.boolean()),
-        targets: z.object({
+        targets: z.optional(z.object({
             create: z.array(
                 z.object({
                     muscle: z.enum([
@@ -31,7 +36,7 @@ export async function createExercise(request: FastifyRequest, reply: FastifyRepl
                     ]),
                 }),
             ),
-        }),
+        })),
     });
 
     const { name, equipment, unilateral, targets } = createExerciseParamsSchema.parse(

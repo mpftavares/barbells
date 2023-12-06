@@ -6,9 +6,13 @@ import { z } from "zod";
 
 export async function updateMetric(request: FastifyRequest<{ Params: { metricId: string } }>, reply: FastifyReply) {
     const updateMetricParamsSchema = z.object({
-        timestamp: z.optional(z.string().datetime()),
-        weight: z.optional(z.number()),
-        bodyFat: z.optional(z.number()),
+        timestamp: z.optional(z.string().datetime({ message: "Invalid datetime string: must be UTC" })),
+        weight: z.optional(z.number({
+            invalid_type_error: "Weight must be a number",
+          }).positive()),
+        bodyFat: z.optional(z.number({
+            invalid_type_error: "bodyFat must be a number",
+          }).positive()),
     })
 
     const { timestamp, weight, bodyFat } = updateMetricParamsSchema.parse(request.body)

@@ -5,14 +5,24 @@ import { z } from "zod";
 export async function createWorkout(request: FastifyRequest, reply: FastifyReply) {
 
     const createWorkoutParamsSchema = z.object({
-        name: z.optional(z.string().nullable()),
-        timestamp: z.optional(z.string().datetime()),
+        name: z.optional(z.string({
+            invalid_type_error: "Name must be a string",
+          })),
+        timestamp: z.optional(z.string().datetime({ message: "Invalid datetime string: must be UTC" })),
         sets: z.object({
             create: z.array(
                 z.object({
-                    exerciseId: z.string(),
-                    weight: z.optional(z.number()),
-                    reps: z.number()
+                    exerciseId: z.string({
+                        required_error: "exerciseId is required",
+                        invalid_type_error: "exerciseId must be an uuid",
+                      }),
+                    weight: z.optional(z.number({
+                        invalid_type_error: "Weight must be a number",
+                      }).positive()),
+                    reps: z.number({
+                        required_error: "Reps is required",
+                        invalid_type_error: "Reps must be a number",
+                      }).positive()
                 })
             )
         })

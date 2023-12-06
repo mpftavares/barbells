@@ -5,14 +5,29 @@ import { z } from "zod";
 export async function createTemplate(request: FastifyRequest, reply: FastifyReply) {
 
     const createTemplateParamsSchema = z.object({
-        name: z.string(),
+        name: z.string({
+            required_error: "Name is required",
+            invalid_type_error: "Name must be a string",
+          }),
         schemas: z.object({
             create: z.array(
                 z.object({
-                    exerciseId: z.string(),
-                    number: z.number(),
-                    sets: z.number(),
-                    reps: z.string()
+                    exerciseId: z.string({
+                        required_error: "exerciseId is required",
+                        invalid_type_error: "exerciseId must be a uuid",
+                      }),
+                    number: z.number({
+                        required_error: "Exercise number is required",
+                        invalid_type_error: "Exercise number must be a number",
+                      }).positive(),
+                    sets: z.number({
+                        required_error: "Number of sets is required",
+                        invalid_type_error: "Number of sets must be a number",
+                      }).positive(),
+                    reps: z.string({
+                        required_error: "Reps is required",
+                        invalid_type_error: "Reps must be a string",
+                      })
                 })
             )
         })

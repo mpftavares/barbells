@@ -7,7 +7,10 @@ import { z } from "zod";
 export async function updateExercise(request: FastifyRequest<{ Params: { exerciseId: string } }>, reply: FastifyReply) {
 
     const updateExerciseParamsSchema = z.object({
-        name: z.string(),
+        name: z.string({
+            required_error: "Name is required",
+            invalid_type_error: "Name must be a string",
+          }),
         equipment: z.enum([
             "assisted",
             "barbell",
@@ -15,7 +18,10 @@ export async function updateExercise(request: FastifyRequest<{ Params: { exercis
             "cable",
             "dumbbells",
             "machine"
-        ]),
+        ],
+        {
+            required_error: "Equipment is required",
+          }),
         unilateral: z.optional(z.boolean()),
     })
 

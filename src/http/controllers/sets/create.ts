@@ -5,10 +5,16 @@ import { z } from "zod";
 export async function createSet(request: FastifyRequest, reply: FastifyReply) {
 
     const createSetParamsSchema = z.object({
-        workoutId: z.string(),
-        exerciseId: z.string(),
-        weight: z.optional(z.number()),
-        reps: z.number()
+        workoutId: z.string({
+            required_error: "workoutId is required",
+            invalid_type_error: "workoutId must be an uuid",
+          }),
+        exerciseId: z.string({
+            required_error: "exerciseId is required",
+            invalid_type_error: "exerciseId must be an uuid",
+          }),
+        weight: z.optional(z.number().positive()),
+        reps: z.number().positive()
     })
 
     const { workoutId, exerciseId, weight, reps } = createSetParamsSchema.parse(request.body)

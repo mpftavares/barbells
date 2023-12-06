@@ -7,7 +7,10 @@ import { z } from "zod";
 export async function updateTemplate(request: FastifyRequest<{ Params: { templateId: string } }>, reply: FastifyReply) {
 
     const updateTemplateParamsSchema = z.object({
-        name: z.string(),
+        name: z.string({
+            required_error: "Name is required",
+            invalid_type_error: "Name must be a string",
+          }),
     })
 
     const { name } = updateTemplateParamsSchema.parse(request.body)

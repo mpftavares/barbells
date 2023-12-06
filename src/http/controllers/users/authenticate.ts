@@ -8,8 +8,14 @@ export async function authenticate(
   reply: FastifyReply,
 ) {
   const authenticateBodySchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
+    email: z.string({
+      required_error: "Email is required",
+      invalid_type_error: "Email must be a string",
+    }).email({ message: "Invalid email address" }),
+    password: z.string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be a string",
+    }).min(6, { message: "Must be 6 or more characters long" }),
   })
 
   const { email, password } = authenticateBodySchema.parse(request.body)
