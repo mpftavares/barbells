@@ -67,4 +67,4 @@ Plataforma de registo de treinos e métricas pessoais: o utilizador pode subscre
 
 ## Stack
 
-NodeJS, Fastify, Prisma, Vistest, Supertest, Docker
+NodeJS, Fastify, Prisma, Zod, Vitest, Supertest, Docker

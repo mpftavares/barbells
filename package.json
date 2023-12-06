@@ -20,7 +20,9 @@
 		"test:coverage": "vitest run --coverage",
 		"test:ui": "vitest --ui",
 		"link": "run-s test:create-prisma-environment test:install-prisma-environment",
-		"vitest": "vitest run"
+		"vitest": "vitest run",
+		"migrate": "prisma migrate dev",
+		"docker": "docker compose up -d"
 	},
 	"keywords": [],
 	"author": "",
