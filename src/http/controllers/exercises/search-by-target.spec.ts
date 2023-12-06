@@ -48,7 +48,7 @@ describe('Search Exercises (e2e)', () => {
         const response = await request(app.server)
             .get('/exercises/search-by-target')
             .query({
-                query: 'hamstrings',
+                muscle: 'hamstrings',
             })
             .set('Authorization', `Bearer ${token}`)
             .send()

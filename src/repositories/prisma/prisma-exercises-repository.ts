@@ -66,7 +66,7 @@ export class PrismaExercisesRepository implements ExercisesRepository {
     return exercises;
   }
 
-  async searchByTarget(query: Muscle, userId: string) {
+  async searchByTarget(muscle: Muscle, userId: string) {
     const exercises = await prisma.exercise.findMany({
       where: {
         AND: [
@@ -83,7 +83,7 @@ export class PrismaExercisesRepository implements ExercisesRepository {
           {
             targets: {
               some: {
-                muscle: query,
+                muscle: muscle,
               },
             },
           },

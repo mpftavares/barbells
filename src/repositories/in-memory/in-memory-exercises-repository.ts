@@ -25,7 +25,7 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
     return this.items.filter((item) => item.name.includes(query) && item.userId === userId);
   }
 
-  async searchByTarget(query: Muscle) {
+  async searchByTarget(muscle: Muscle) {
 
     // GL with that - see bellow
 

@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 export async function searchExercisesByTarget(request: FastifyRequest, reply: FastifyReply) {
   const searchExercisesByTargetQuerySchema = z.object({
-    query: z.enum([
+    muscle: z.enum([
       'abs',
       'back',
       'biceps',
@@ -19,12 +19,12 @@ export async function searchExercisesByTarget(request: FastifyRequest, reply: Fa
     ]),
   })
 
-  const { query } = searchExercisesByTargetQuerySchema.parse(request.query)
+  const { muscle } = searchExercisesByTargetQuerySchema.parse(request.query)
 
   const searchExercisesByTargetUseCase = makeSearchExerciseUseCase()
 
   const { exercises } = await searchExercisesByTargetUseCase.execute({
-    query,
+    muscle,
     userId: request.user.sub
   })
 
