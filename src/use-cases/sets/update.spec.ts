@@ -14,6 +14,7 @@ it('should update set weight', async () => {
 
     const setToUpdate = await setsRepository.create({
         workoutId: "workout-01",
+        number: 1,
         exerciseId: "exercise-01",
         weight: 100,
         reps: 10,
@@ -21,6 +22,7 @@ it('should update set weight', async () => {
 
     const { updatedSet } = await sut.execute({
         id: setToUpdate.id,
+        number: 1,
         weight: 120,
         reps: 8
     });

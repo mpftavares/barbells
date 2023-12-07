@@ -14,6 +14,7 @@ describe('Create Schema Use Case', () => {
   it('should be able to create an schema', async () => {
     const { schema } = await sut.execute({
       templateId: "template-01",
+      number: 1,
       exerciseId: "exercise-01",
       sets: 3,
       reps: '8-12'

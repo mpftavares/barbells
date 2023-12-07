@@ -22,13 +22,11 @@ export class InMemorySetsRepository implements SetsRepository {
 
   async create(data: Prisma.SetUncheckedCreateInput) {
 
-    const setNumber = this.items.length + 1
-
     const set = {
       id: randomUUID(),
       workoutId: data.workoutId,
       exerciseId: data.exerciseId,
-      number: setNumber,
+      number: data.number,
       weight: data.weight ?? null,
       reps: data.reps,
     };

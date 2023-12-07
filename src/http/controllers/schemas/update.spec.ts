@@ -33,6 +33,7 @@ describe('Update Schema Use Case (e2e)', () => {
             .set('Authorization', `Bearer ${token}`)
             .send({
                 templateId: template.id,
+                number: 1,
                 exerciseId: exercise.id,
                 sets: 5,
                 reps: '5',

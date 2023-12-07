@@ -89,9 +89,9 @@ model Template {
   id   String @id @default(uuid())
   name String @unique
 
-  userId String?  @map("user_id")
-  user   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+  userId String? @map("user_id")
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   schemas Schema[]
 
   @@map("templates")
@@ -106,7 +106,7 @@ model Schema {
   exerciseId String   @map("exercise_id")
   exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
 
-  number Int    @default(autoincrement())
+  number Int
   sets   Int
   reps   String
 
@@ -134,7 +134,7 @@ model Set {
   exerciseId String   @map("exercise_id")
   exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
 
-  number Int    @default(autoincrement())
+  number Int
   weight Float?
   reps   Int
 

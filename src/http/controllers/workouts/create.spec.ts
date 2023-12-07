@@ -30,9 +30,9 @@ describe('Create workout (e2e)', () => {
         timestamp: new Date(),
         sets: {
           create: [
-            { exerciseId: exercise.id, reps: 12 },
-            { exerciseId: exercise.id, reps: 10 },
-            { exerciseId: exercise.id, reps: 8 },
+            { number: 1, exerciseId: exercise.id, reps: 12 },
+            { number: 2, exerciseId: exercise.id, reps: 10 },
+            { number: 3, exerciseId: exercise.id, reps: 8 },
           ]
         }
       })

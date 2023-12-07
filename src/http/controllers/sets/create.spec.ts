@@ -30,6 +30,7 @@ describe('Create set (e2e)', () => {
       .set('Authorization', `Bearer ${token}`)
       .send({
         workoutId: workout.id,
+        number: 1,
         exerciseId: exercise.id,
         reps: 10,
 

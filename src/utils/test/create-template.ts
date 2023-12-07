@@ -8,8 +8,8 @@ export async function createTemplate(user: User, exercise: Exercise) {
       userId: user.id,
       schemas: {
         create: [
-          { exerciseId: exercise.id, sets: 3, reps: '8-12' },
-          { exerciseId: exercise.id, sets: 3, reps: '12-15' }
+          { number: 1, exerciseId: exercise.id, sets: 3, reps: '8-12' },
+          { number: 2, exerciseId: exercise.id, sets: 3, reps: '12-15' }
         ],
       },
     },

@@ -8,22 +8,26 @@ export async function createTemplate(request: FastifyRequest, reply: FastifyRepl
         name: z.string({
             required_error: "Name is required",
             invalid_type_error: "Name must be a string",
-          }),
+        }),
         schemas: z.object({
             create: z.array(
                 z.object({
+                    number: z.number({
+                        required_error: "Exercise number of sets is required",
+                        invalid_type_error: "Exercise number of sets must be a number",
+                    }).positive(),
                     exerciseId: z.string({
                         required_error: "exerciseId is required",
                         invalid_type_error: "exerciseId must be a uuid",
-                      }),
+                    }),
                     sets: z.number({
                         required_error: "Number of sets is required",
                         invalid_type_error: "Number of sets must be a number",
-                      }).positive(),
+                    }).positive(),
                     reps: z.string({
                         required_error: "Reps is required",
                         invalid_type_error: "Reps must be a string",
-                      })
+                    })
                 })
             )
         })

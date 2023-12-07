@@ -4,6 +4,7 @@ import { FailedToCreateResourceError } from "../errors/failed-to-create-resource
 
 interface CreateSetUseCaseRequest {
     workoutId: string
+    number: number
     exerciseId: string
     weight?: number
     reps: number
@@ -19,6 +20,7 @@ export class CreateSetUseCase {
 
     async execute({
         workoutId,
+        number,
         exerciseId,
         weight,
         reps
@@ -26,6 +28,7 @@ export class CreateSetUseCase {
 
         const set = await this.setsRepository.create({
             workoutId,
+            number,
             exerciseId,
             weight,
             reps

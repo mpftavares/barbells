@@ -5,6 +5,7 @@ import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateSetUseCaseRequest {
   id: string
+  number: number
   weight?: number
   reps: number
 }
@@ -18,6 +19,7 @@ export class UpdateSetUseCase {
 
   async execute({
     id,
+    number,
     weight,
     reps
   }: UpdateSetUseCaseRequest): Promise<UpdateSetUseCaseResponse> {
@@ -28,7 +30,7 @@ export class UpdateSetUseCase {
       throw new ResourceNotFoundError()
     }
 
-    const data = { weight, reps }
+    const data = { number, weight, reps }
 
     const updatedSet = await this.setsRepository.update(
       id,

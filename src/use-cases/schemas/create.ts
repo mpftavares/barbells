@@ -1,9 +1,10 @@
 import { SchemasRepository } from "@/repositories/schemas-repository"
-import { Equipment, Schema } from "@prisma/client"
+import { Schema } from "@prisma/client"
 import { FailedToCreateResourceError } from "../errors/failed-to-create-resource.error"
 
 interface CreateSchemaUseCaseRequest {
     templateId: string
+    number: number
     exerciseId: string
     sets: number
     reps: string
@@ -19,6 +20,7 @@ export class CreateSchemaUseCase {
 
     async execute({
         templateId,
+        number,
         exerciseId,
         sets,
         reps
@@ -26,6 +28,7 @@ export class CreateSchemaUseCase {
 
         const schema = await this.schemasRepository.create({
             templateId,
+            number,
             exerciseId,
             sets,
             reps

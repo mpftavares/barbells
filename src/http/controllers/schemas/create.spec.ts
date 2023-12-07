@@ -30,6 +30,7 @@ describe('Create schema (e2e)', () => {
       .set('Authorization', `Bearer ${token}`)
       .send({
         templateId: template.id,
+        number: 1,
         exerciseId: exercise.id,
         sets: 3,
         reps: '8-12'

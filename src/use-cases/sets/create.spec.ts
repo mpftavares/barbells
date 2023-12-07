@@ -15,6 +15,7 @@ describe('Create Set Use Case', () => {
 
         const { set } = await sut.execute({
             workoutId: "workout-01",
+            number: 1,
             exerciseId: "exercise-01",
             weight: 100,
             reps: 10,

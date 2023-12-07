@@ -5,6 +5,7 @@ import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 interface UpdateSchemaUseCaseRequest {
   id: string
+  number: number
   exerciseId: string
   sets: number
   reps: string
@@ -19,6 +20,7 @@ export class UpdateSchemaUseCase {
 
   async execute({
     id,
+    number,
     exerciseId,
     sets,
     reps
@@ -30,7 +32,7 @@ export class UpdateSchemaUseCase {
       throw new ResourceNotFoundError()
     }
 
-    const data = { exerciseId, sets, reps }
+    const data = { exerciseId, number, sets, reps }
 
     const updatedSchema = await this.schemasRepository.update(
       id,

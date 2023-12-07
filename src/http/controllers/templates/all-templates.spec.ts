@@ -29,8 +29,8 @@ describe('Get All Templates (e2e)', () => {
                 name: 'test template',
                 schemas: {
                     create: [
-                        { exerciseId: exercise.id, sets: 3, reps: '8-12' },
-                        { exerciseId: exercise.id, sets: 3, reps: '12-15' }
+                        { number: 1, exerciseId: exercise.id, sets: 3, reps: '8-12' },
+                        { number: 2, exerciseId: exercise.id, sets: 3, reps: '12-15' }
                     ],
                 },
             })
@@ -42,8 +42,8 @@ describe('Get All Templates (e2e)', () => {
                 name: 'another test template',
                 schemas: {
                     create: [
-                        { exerciseId: exercise.id, sets: 3, reps: '8-12' },
-                        { exerciseId: exercise.id, sets: 3, reps: '12-15' }
+                        { number: 1, exerciseId: exercise.id, sets: 3, reps: '8-12' },
+                        { number: 2, exerciseId: exercise.id, sets: 3, reps: '12-15' }
                     ],
                 },
             })

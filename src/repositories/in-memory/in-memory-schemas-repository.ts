@@ -22,13 +22,11 @@ export class InMemorySchemasRepository implements SchemasRepository {
 
   async create(data: Prisma.SchemaUncheckedCreateInput) {
 
-    const exerciseNumber = this.items.length + 1
-
     const schema = {
       id: randomUUID(),
       templateId: data.templateId,
       exerciseId: data.exerciseId,
-      number: exerciseNumber,
+      number: data.number,
       sets: data.sets,
       reps: data.reps,
     };

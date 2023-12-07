@@ -32,6 +32,7 @@ describe('Update Set Use Case (e2e)', () => {
             .put(`/sets/${set.id}`)
             .set('Authorization', `Bearer ${token}`)
             .send({
+                number: 1,
                 weight: 120,
                 reps: 8,
             });

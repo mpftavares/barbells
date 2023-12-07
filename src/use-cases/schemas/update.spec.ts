@@ -14,6 +14,7 @@ it('should update schema', async () => {
 
     const schemaToUpdate = await schemasRepository.create({
         templateId: "template-01",
+        number: 1,
         exerciseId: "exercise-01",
         sets: 3,
         reps: '8-12'
@@ -22,6 +23,7 @@ it('should update schema', async () => {
 
     const { updatedSchema } = await sut.execute({
         id: schemaToUpdate.id,
+        number: 1,
         exerciseId: "exercise-01",
         sets: 5,
         reps: '5'

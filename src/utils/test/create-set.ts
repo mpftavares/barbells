@@ -5,6 +5,7 @@ export async function createSet(workout: Workout, exercise: Exercise) {
     const set = await prisma.set.create({
         data: {
             workoutId: workout.id,
+            number: 1,
             exerciseId: exercise.id,
             weight: 100,
             reps: 10,
