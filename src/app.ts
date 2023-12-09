@@ -10,8 +10,13 @@ import { setsRoutes } from './http/controllers/sets/routes'
 import { metricsRoutes } from './http/controllers/metrics/routes'
 import { templatesRoutes } from './http/controllers/templates/routes'
 import { schemasRoutes } from './http/controllers/schemas/routes'
+import fastifyCors from '@fastify/cors'
 
 export const app = fastify()
+
+app.register(fastifyCors, {
+  origin: 'http://localhost:3000',
+});
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
