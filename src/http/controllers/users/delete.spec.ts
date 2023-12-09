@@ -18,7 +18,7 @@ describe('Delete User Profile Use Case (e2e)', () => {
         const { token } = await createAndAuthenticateUser(app)
 
         const deleteUserResponse = await request(app.server)
-            .delete('/users/me')
+            .delete('/me')
             .set('Authorization', `Bearer ${token}`)
             .send();
 

@@ -8,14 +8,14 @@ import { deleteUser } from './delete'
 import { logout } from './logout'
 
 export async function usersRoutes(app: FastifyInstance) {
-  app.post('/users', register)
-  app.post('/sessions', authenticate)
+  app.post('/register', register)
+  app.post('/login', authenticate)
 
   app.patch('/token/refresh', refresh)
 
-  app.get('/users/me', { onRequest: [verifyJwt] }, profile)
-  app.delete('/users/me', { onRequest: [verifyJwt] }, deleteUser)
-  
-  app.post('/users/logout', logout)
+  app.get('/me', { onRequest: [verifyJwt] }, profile)
+  app.delete('/me', { onRequest: [verifyJwt] }, deleteUser)
+
+  app.post('/logout', logout)
 
 }

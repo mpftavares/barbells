@@ -18,7 +18,7 @@ describe('Logout (e2e)', () => {
         const { token } = await createAndAuthenticateUser(app)
 
         const logoutResponse = await request(app.server)
-            .post('/users/logout')
+            .post('/logout')
             .set('Authorization', `Bearer ${token}`)
             .send()
 
