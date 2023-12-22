@@ -15,7 +15,7 @@ import fastifyCors from '@fastify/cors'
 export const app = fastify()
 
 app.register(fastifyCors, {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://barbells-p120.onrender.com'],
 });
 
 app.register(fastifyJwt, {
