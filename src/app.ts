@@ -15,7 +15,7 @@ import fastifyCors from '@fastify/cors'
 export const app = fastify()
 
 app.register(fastifyCors, {
-  origin: ['http://localhost:3000', 'https://mpftavares.github.io'],
+  origin: ['http://localhost:3000', 'http://localhost:4173/', 'https://mpftavares.github.io'],
 });
 
 app.register(fastifyJwt, {
